@@ -6,12 +6,10 @@ import logoAdalab from './images/logo-adalab.png';
 import logoCards from './images/logo.svg';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faKeyboard} from '@fortawesome/free-solid-svg-icons';
-import {faShareAlt} from '@fortawesome/free-solid-svg-icons';
 import {faObjectUngroup} from '@fortawesome/free-solid-svg-icons';
-library.add(faShareAlt);
-library.add(faKeyboard);
-library.add(faObjectUngroup);
+import {faKeyboard, faShareAlt} from '@fortawesome/free-solid-svg-icons';
+library.add(faShareAlt, faKeyboard, faObjectUngroup);
+
 
 class Page extends Component {
     render() { 
@@ -51,7 +49,7 @@ class Page extends Component {
         const all = (
             <div className = "page" >
                 <div className = "main" >
-                {pageHeader}; {pageMain}; {pageFooter};
+                {pageHeader} {pageMain} {pageFooter}
                 </div>
             </div>
         );
