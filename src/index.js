@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/index.scss';
-import Page from './main_index';
+// import Page from './main_index';
 import CardIndex from './CardIndex';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<CardIndex />, document.getElementById('root'));
