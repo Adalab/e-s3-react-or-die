@@ -9,7 +9,7 @@ class CardIndex extends Component {
         const editHeader = (
         <header>
             <a href="index-edit.html">
-                <img src="assets/images/logo.svg" alt="hero" className="img-hero"/>
+                <img src={logoCards} alt="hero" className="img-hero"/>
             </a>
         </header>
         );
