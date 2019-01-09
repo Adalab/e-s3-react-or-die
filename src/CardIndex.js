@@ -56,7 +56,7 @@ class CardIndex extends Component {
                                         <i className="fas fa-angle-down icon-down"></i>
                                     </div>
                                 </div>
-                                <div className="collapsible__content-design hidden">
+                                <div className="collapsible__content-design">
                                     <div className="colors">
                                         <h3 className="subtitle__collapsible">Colores</h3>
                                         <ul className="themes">
@@ -123,7 +123,7 @@ class CardIndex extends Component {
                                         <i className="fas fa-angle-down icon-down"></i>
                                     </div>
                                 </div>
-                                <div className="collapsible__content-fill hidden">
+                                <div className="collapsible__content-fill ">
                                     <div className="collapsible__content-form">
                                         <label for="name" className="form-label form-label--name">Nombre completo</label>
                                         <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input"/>
@@ -182,7 +182,7 @@ class CardIndex extends Component {
                             <i className="fas fa-angle-down icon-down"></i>
                             </div>
                         </div>
-                        <div className="collapsible__content-share hidden">
+                        <div className="collapsible__content-share">
                             <button type="button" className="collapsible__content-button"><i className="far fa-address-card"></i>Crear tarjeta</button>
                             <div className="getURL"></div>
                         </div>
