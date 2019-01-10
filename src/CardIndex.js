@@ -206,11 +206,19 @@ class CardIndex extends Component {
         ); 
 
         const all = (
-            <div className = "page" >
-                <div className = "main" >
-                    {editHeader} {editCard} {cardStyle} {pageFooter}                 
-                </div>
-            </div>
+                <React.Fragment>
+                    {editHeader}
+
+                    <div className="main-section">
+                        {editCard}
+                        {cardStyle}
+                    </div>
+                    
+                    {pageFooter}
+                </React.Fragment>
+                                       
+                
+
         );
         return all;
     }
