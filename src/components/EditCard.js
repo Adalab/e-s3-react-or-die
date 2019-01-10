@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
+import ResetBtn from './ResetBtn';
 
 
 class EditCard extends Component {
     render() {
         const editCard = (
             <section className="section__card">
-                <div className="section__card-button">
-                    <button className="reset"><i className="far fa-trash-alt icon-reset"></i>Reset</button>
-                </div>
+                <ResetBtn/>
                 <div className="section__card-content">
                     <div className="description">
                         <div className="rectangle"></div>

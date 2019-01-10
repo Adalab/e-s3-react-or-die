@@ -4,14 +4,6 @@ import React, {
 import './stylesheets/index.scss';
 import logoAdalab from './images/logo-adalab.png';
 import logoCards from './images/logo.svg';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faKeyboard} from '@fortawesome/free-solid-svg-icons';
-import {faShareAlt} from '@fortawesome/free-solid-svg-icons';
-import {faObjectUngroup} from '@fortawesome/free-solid-svg-icons';
-library.add(faShareAlt);
-library.add(faKeyboard);
-library.add(faObjectUngroup);
 
 class Page extends Component {
     render() { 
@@ -28,9 +20,9 @@ class Page extends Component {
                     <h1 className="main__title">Crea tu tarjeta de visita</h1>
                     <p className="main__subtitle">Crea mejores contactos profesionales de forma fácil y cómoda</p>
                     <ul className="main__icons">
-                        <li className="main__item diseña"> <FontAwesomeIcon icon="object-ungroup" className="icon object-ungroup" /> Diseña</li>
-                        <li className="main__item rellena"><FontAwesomeIcon icon="keyboard" className="icon keyboard" /> Rellena</li>
-                        <li className="main__item comparte"><FontAwesomeIcon icon="share-alt" className="icon share-alt" /> Comparte</li>
+                        <li className="main__item"><i className="icon far fa-object-ungroup"></i> Diseña</li>
+                        <li className="main__item"><i className="icon far fa-keyboard"></i>  Rellena</li>
+                        <li className="main__item"><i className="icon fas fa-share-alt"></i> Comparte</li>
                     </ul>
                     <a className="link__other" href="">
                         <div className="btn__comenzar">Comenzar</div>
