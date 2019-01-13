@@ -4,7 +4,7 @@ import FormContainer from './FormContainer';
 
 class Main extends Component {
     render() {
-                   
+                           
         return (
             <div className="main-section">
                 <EditCard />
