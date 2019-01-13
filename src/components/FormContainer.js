@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import DesignCard from './DesignCard';
+import FillCard from './FillCard';
+import ShareCard from './ShareCard';
 
 class FormContainer extends Component {
     render() {
@@ -11,6 +13,8 @@ class FormContainer extends Component {
                         <form action="">
                             <div className="section-form__fieldset-container section-form__fieldset-container--design">
                                 <DesignCard/>
+                                <FillCard/>
+                                <ShareCard/>
                             </div>
                         </form>
                     </div>
