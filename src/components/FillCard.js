@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class FillCard extends Component {
     render() {
+        const skillsArray = this.props.skillsArray;
       
         return (
             <React.Fragment>
@@ -61,15 +62,12 @@ class FillCard extends Component {
                             </div>
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
-                                    <ul className="container__skills-list">                        
-                                        <li><label for="this.props.skillsArray[0]" className="input-skills"><input className="maxCheck" id="this.props.skillsArray[0]" type="checkbox" value="this.props.skillsArray[0]" name="skills"></input>this.props.skillsArray[0]</label></li>
-                                        <li><label for="CSS" className="input-skills"><input className="maxCheck" id="CSS" type="checkbox" value="CSS" name="skills"></input>CSS</label></li>
-                                        <li><label for="Sass" className="input-skills"><input className="maxCheck" id="Sass" type="checkbox" value="Sass" name="skills"></input>Sass</label></li>
-                                        <li><label for="Git" className="input-skills"><input className="maxCheck" id="Git" type="checkbox" value="Git" name="skills"></input>Git</label></li>
-                                        <li><label for="Gulp" className="input-skills"><input className="maxCheck" id="Gulp" type="checkbox" value="Gulp" name="skills"></input>Gulp</label></li>
-                                        <li><label for="JavaScript" className="input-skills"><input className="maxCheck" id="JavaScript" type="checkbox" value="JavaScript" name="skills"></input>JavaScript</label></li>
-                                        <li><label for="AJAX" className="input-skills"><input className="maxCheck" id="AJAX" type="checkbox" value="AJAX" name="skills"></input>AJAX</label></li>
-                                        <li><label for="React" className="input-skills"><input className="maxCheck" id="React" type="checkbox" value="React" name="skills"></input>React</label></li>
+                                    <ul className="container__skills-list">  
+                                    {skillsArray.map(skill=>{
+                                        return(
+                                            <li><label for={skill} className="input-skills"><input className="maxCheck" id={skill} type="checkbox" value={skill} name="skills"></input>{skill}</label></li>
+                                        )
+                                    })}                                                                                                
                                     </ul>
                                 </div>
                             </div>

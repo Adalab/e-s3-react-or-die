@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DesignCard from './DesignCard';
 import FillCard from './FillCard';
 import ShareCard from './ShareCard';
-import { threadId } from 'worker_threads';
+
 
 const skillsArray = [
     'HTML',
