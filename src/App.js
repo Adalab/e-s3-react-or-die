@@ -1,5 +1,5 @@
 import React from 'react';
-import CardIndex from './CardIndex';
+import CardIndex from './components/CardIndex';
 import './App.scss';
 
 

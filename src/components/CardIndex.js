@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './stylesheets/index.scss';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Main from './components/Main';
+import '../stylesheets/index.scss';
+import Header from './Header';
+import Footer from './Footer';
+import Main from './Main';
 
 class CardIndex extends Component {
     render() {
