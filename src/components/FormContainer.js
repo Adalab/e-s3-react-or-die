@@ -16,7 +16,7 @@ class FormContainer extends Component {
                         <form action="">
                             <div className="section-form__fieldset-container section-form__fieldset-container--design">
                                 <DesignCard/>
-                                <FillCard skillsArray = {this.props.skillsArray}/>
+                                <FillCard skillsArray = {this.props.skillsArray} default={this.props.default}/>
                                 <ShareCard/>
                             </div>
                         </form>

@@ -16,9 +16,21 @@ const skillsArray = [
 
 
 class App extends React.Component {
+    constructor (props){
+        super(props);
+        this.state = {
+            name:'Paca',
+            job:'Unicornio'
+        }
+    }
+    handleName(event){
+        this.setState({
+            name:event.currenTarget.value
+        });
+    }
     render(){
         return(
-            <CardIndex skillsArray = {skillsArray} />
+            <CardIndex skillsArray = {skillsArray} handleName = {this.handleName} default={this.state}  />
         );
     }
 }
