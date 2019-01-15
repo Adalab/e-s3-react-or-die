@@ -67,7 +67,7 @@ class FillCard extends Component {
                                         return(
                                             <li><label for={skill} className="input-skills"><input className="maxCheck" id={skill} type="checkbox" value={skill} name="skills"></input>{skill}</label></li>
                                         )
-                                    })}                                                                                                
+                                    })}
                                     </ul>
                                 </div>
                             </div>

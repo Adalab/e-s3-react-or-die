@@ -4,16 +4,6 @@ import FillCard from './FillCard';
 import ShareCard from './ShareCard';
 
 
-const skillsArray = [
-    'HTML',
-    'CSS',
-    'Sass',
-    'Git',
-    'Gulp',
-    'JavaScript',
-    'AJAX',
-    'React'
-]
 
 class FormContainer extends Component {
     render() {
@@ -26,7 +16,7 @@ class FormContainer extends Component {
                         <form action="">
                             <div className="section-form__fieldset-container section-form__fieldset-container--design">
                                 <DesignCard/>
-                                <FillCard skillsArray={skillsArray}/>
+                                <FillCard skillsArray = {this.props.skillsArray}/>
                                 <ShareCard/>
                             </div>
                         </form>
