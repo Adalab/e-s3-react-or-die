@@ -1,46 +1,61 @@
 import React, { Component } from 'react';
 
-const dataJason = {
-    "palette": 0,
-    "typography": 0,
-    "name": "",
-    "job": "",
-    "phone": "",
-    "email": "",
-    "linkedin": "",
-    "github": "",
-    "photo": "",
-    "skills": ['uno', 'dos','tres']
-};
-
-
-
+// const dataJason = {
+//     palette: 0,
+//     typography: 0,
+//     name: "",
+//     job: "",
+//     phone: "",
+//     email: "",
+//     linkedin: "",
+//     github: "",
+//     photo: "",
+//     skills: ['uno', 'dos','tres']
+// }
 class LocalStorage extends Component {
     constructor(props){
-        super(props);
+        super(props);        
         this.state={
-          name:""
+        //   name: this.getStorage("name"),
+          dataJason: this.getStorage("dataJason")          
+        
     };
     
-        this.handleFilmName = this.handleFilmName.bind(this);
+        this.handleName = this.handleName.bind(this);
+        this.handleJob = this.handleJob.bind(this);
         this.createStorage = this.createStorage.bind(this);
     }
       
-      handleFilmName(event){
-        this.setState({name:event.currentTarget.value});
-        this.createStorage(this.state.name);
+      handleName(event){
+        this.setState({
+            dataJason: {...this.state.dataJason, name:event.currentTarget.value}});
+        const localName = event.currentTarget.value;
+        this.createStorage(localName);
+        console.log(this.state.dataJason.name);
     }
+
+    handleJob(event){
+        this.setState({
+        dataJason: {...this.state.dataJason, job:event.currentTarget.value}
+        });
+        this.createStorage(this.state.job);
+    }   
       
     localStore(key, value) {
         localStorage.setItem(key, value);
         }
       
     getStorage(key) {
-        return localStorage.getItem(key);
+        if (localStorage.getItem(key) !== null){
+            return JSON.parse(localStorage.getItem(key));
+        }else{
+            return "";
+        }
     }
     
     createStorage(){
-        localStorage.setItem('name', JSON.stringify(this.state.name));
+        localStorage.setItem('key', JSON.stringify(this.state.dataJason));
+        
     }
       
     
@@ -51,12 +66,16 @@ class LocalStorage extends Component {
             <div className="name__container">
 
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" onKeyUp={this.handleFilmName} defaultValue={this.state.name} />
+                <input type="text" id="name" onKeyUp={this.handleName} defaultValue={this.state.dataJason.name} />
+                <label htmlFor="job">Job:</label>
+                <input type="text" id="job" onKeyUp={this.handleJob} defaultValue={this.state.dataJason.job} />
+                
 
             </div>
             </form>
     
-            <h2>{this.state.name}</h2>
+            <h2>{this.state.dataJason.name}</h2>
+            <h2>{this.state.dataJason.job}</h2>
             </React.Fragment>
         );
     }
