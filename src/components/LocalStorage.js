@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 
-// const dataJason = {
-//     palette: 0,
-//     typography: 0,
-//     name: "",
-//     job: "",
-//     phone: "",
-//     email: "",
-//     linkedin: "",
-//     github: "",
-//     photo: "",
-//     skills: ['uno', 'dos','tres']
-// }
+const dataJason = {
+    palette: 0,
+    typography: 0,
+    name: "",
+    job: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    github: "",
+    photo: "",
+    skills: ['uno', 'dos','tres']
+}
 class LocalStorage extends Component {
     constructor(props){
         super(props);        
         this.state={
-        //   name: this.getStorage("name"),
+        
           dataJason: this.getStorage("dataJason")          
         
     };
@@ -31,7 +31,6 @@ class LocalStorage extends Component {
             dataJason: {...this.state.dataJason, name:event.currentTarget.value}});
         const localName = event.currentTarget.value;
         this.createStorage(localName);
-        console.log(this.state.dataJason.name);
     }
 
     handleJob(event){
@@ -47,14 +46,16 @@ class LocalStorage extends Component {
       
     getStorage(key) {
         if (localStorage.getItem(key) !== null){
+            console.log('yay')
             return JSON.parse(localStorage.getItem(key));
         }else{
-            return "";
+            console.log('fos')
+            return dataJason;
         }
     }
     
     createStorage(){
-        localStorage.setItem('key', JSON.stringify(this.state.dataJason));
+        localStorage.setItem('dataJason', JSON.stringify(this.state.dataJason));
         
     }
       
