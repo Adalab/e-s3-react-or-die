@@ -22,15 +22,20 @@ class App extends React.Component {
             name:'Paca',
             job:'Unicornio'
         }
+
+        this.handleName = this.handleName.bind(this);
     }
+
     handleName(event){
         this.setState({
-            name:event.currenTarget.value
+            name:event.currentTarget.value
         });
+        console.log(this.state.name)
     }
+
     render(){
         return(
-            <CardIndex skillsArray = {skillsArray} handleName = {this.handleName} default={this.state}  />
+            <CardIndex skillsArray = {skillsArray} handleName = {this.handleName} name={this.state.name}  />
         );
     }
 }

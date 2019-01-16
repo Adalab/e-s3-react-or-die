@@ -10,7 +10,7 @@ class EditCard extends Component {
                 <div className="section__card-content">
                     <div className="description">
                         <div className="rectangle"></div>
-                        <h1 className="h1-description">{this.props.default.name}</h1>
+                        <h1 className="h1-description">{this.props.name}</h1>
                         <p className="text-description">Front-End developer</p>
                     </div>
                     <div className="profile-pic"></div>

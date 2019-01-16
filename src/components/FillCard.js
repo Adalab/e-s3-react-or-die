@@ -20,8 +20,8 @@ class FillCard extends Component {
                         </div>
                         <div className="collapsible__content-fill ">
                             <div className="collapsible__content-form">
-                                <label for="name" className="form-label form-label--name">{this.props.default.name}</label>
-                                <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input" onChange={this.props.handleName}/>
+                                <label for="name" className="form-label form-label--name">Nombre completo</label>
+                                <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input"  onKeyUp={this.props.handleName}/>
                             </div>
                             <div className="collapsible__content-form">
                                 <label for="puesto" className="form-label form-label--puesto">Puesto</label>
