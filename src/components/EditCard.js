@@ -10,16 +10,16 @@ class EditCard extends Component {
                 <div className="section__card-content">
                     <div className="description">
                         <div className="rectangle"></div>
-                        <h1 className="h1-description">{this.props.name}</h1>
-                        <p className="text-description">Front-End developer</p>
+                        <h1 className="h1-description">{this.props.cardInfo.name}</h1>
+                        <p className="text-description">{this.props.cardInfo.job}</p>
                     </div>
                     <div className="profile-pic"></div>
                     <div className="social-media">
                         <ul className="social-media__list">
-                            <li className=" contact-list__tlf list__item--tel"></li>
-                            <li className=" contact-list__mail list__item--mail"></li>
-                            <li className="contact-list__linkedin list__item--linkedin"></li>
-                            <li className=" contact-list__github list__item--github"></li>
+                            <li className=" contact-list__tlf list__item--tel">{this.props.cardInfo.phone}</li>
+                            <li className=" contact-list__mail list__item--mail">{this.props.cardInfo.email}</li>
+                            <li className="contact-list__linkedin list__item--linkedin">{this.props.cardInfo.linkedin}</li>
+                            <li className=" contact-list__github list__item--github">{this.props.cardInfo.github}</li>
                         </ul>
                     </div>
                     <div className="skills">

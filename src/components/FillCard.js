@@ -25,7 +25,7 @@ class FillCard extends Component {
                             </div>
                             <div className="collapsible__content-form">
                                 <label for="puesto" className="form-label form-label--puesto">Puesto</label>
-                                <input type="text" name="puesto" id="puesto" placeholder="Ej: Front-end unicorn" className="form-input" />
+                                <input type="text" name="puesto" id="puesto" placeholder="Ej: Front-end unicorn" className="form-input" onKeyUp={this.props.handleJob}/>
                             </div>
                             <div className="collapsible__content-form">
                                 <div className="container__btn-img">
@@ -40,22 +40,22 @@ class FillCard extends Component {
                             <div className="collapsible__content-form">
                                 <label for="email" className="form-label">Email</label>
                                 <input type="email" name="email" id="email" placeholder="Ej: sally-hill@gmail.com" className="form-input"
-                                    data-common="mailto:" data-ico="far fa-envelope social-media__icon" data-dest=".list__item--mail" />
+                                    data-common="mailto:" data-ico="far fa-envelope social-media__icon" data-dest=".list__item--mail" onKeyUp={this.props.handleEmail} />
                             </div>
                             <div className="collapsible__content-form">
                                 <label for="phone" className="form-label">Teléfono</label>
                                 <input type="tel" id="phone" name="phone" placeholder="Ej: 555-55-55-55" className="form-input"
-                                    data-common="tel:" data-ico="fas fa-mobile-alt social-media__icon" data-dest=".list__item--tel" />
+                                    data-common="tel:" data-ico="fas fa-mobile-alt social-media__icon" data-dest=".list__item--tel" onKeyUp={this.props.handlePhone}/>
                             </div>
                             <div className="collapsible__content-form">
                                 <label for="linkedin" className="form-label">Linkedin</label>
                                 <input type="" name="linkedin" id="linkedin" placeholder="Ej: linkedin.com/in/sally.hill" className="form-input"
-                                    data-common="https://es.linkedin.com/" data-ico="fab fa-linkedin-in social-media__icon" data-dest=".list__item--linkedin" />
+                                    data-common="https://es.linkedin.com/" data-ico="fab fa-linkedin-in social-media__icon" data-dest=".list__item--linkedin" onKeyUp={this.props.handleLinkedin} />
                             </div>
                             <div className="collapsible__content-form">
                                 <label for="github" className="form-label">Github</label>
                                 <input type="" name="github" id="github" placeholder="Ej: @sally-hill" className="form-input"
-                                    data-common="https://github.com/" data-ico="fab fa-github-alt social-media__icon" data-dest=".list__item--github" />
+                                    data-common="https://github.com/" data-ico="fab fa-github-alt social-media__icon" data-dest=".list__item--github" onKeyUp={this.props.handleGithub}/>
                             </div>
                             <div className="container__skill--title">
                                 <p className="skills">Habilidades (máximo 3)</p>
