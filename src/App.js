@@ -19,23 +19,39 @@ class App extends React.Component {
     constructor (props){
         super(props);
         this.state = {
-            name:'Paca',
-            job:'Unicornio'
+            card: 
+                {
+                    palette: 1,
+                    typography: 2,
+                    name: 'Nombre completo',
+                    job: '',
+                    phone: '',
+                    email: '',
+                    linkedin: '',
+                    github: '',
+                    photo: '',
+                    skills: ['HTML', 'Sass', 'JavaScript']
+                }
+            
+            // name:'Paca'
         }
 
         this.handleName = this.handleName.bind(this);
     }
 
+  
     handleName(event){
         this.setState({
-            name:event.currentTarget.value
+
+            card: {...this.state.card, name: event.currentTarget.value}
+        
         });
         console.log(this.state.name)
     }
 
     render(){
         return(
-            <CardIndex skillsArray = {skillsArray} handleName = {this.handleName} name={this.state.name}  />
+            <CardIndex skillsArray = {skillsArray} handleName = {this.handleName} name={this.state.card.name}  />
         );
     }
 }
