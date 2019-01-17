@@ -3,24 +3,81 @@ import ResetBtn from './ResetBtn';
 
 
 class EditCard extends Component {
-    isEmpty () {
+    isEmptyPhone () {
 
         if (this.props.cardInfo.phone !== '') { 
-            console.log('hay algo', this.props.cardInfo.phone);
             return (
                 <div>
                     <li className=" contact-list__tlf list__item--tel social-media__icon"><i className="fas fa-mobile-alt"></i></li>
-            </div>
+                </div>
             
             )
             
         } 
         else {
-            console.log('paca, no hay nada', this.props.cardInfo.phone);
-            
             return (
             <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"><i className="fas fa-mobile-alt"></i></li>
+                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+            </div> 
+            )
+        
+    }
+    }
+    isEmptyEmail () {
+
+        if (this.props.cardInfo.email !== '') { 
+            return (
+                <div>
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="far fa-envelope"></i></li>
+                </div>
+            
+            )
+            
+        } 
+        else {
+            return (
+            <div className="hidden__icon">
+                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+            </div> 
+            )
+        
+    }
+    }
+    isEmptyGithub () {
+
+        if (this.props.cardInfo.github !== '') { 
+            return (
+                <div>
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="fab fa-github-alt"></i></li>
+                </div>
+            
+            )
+            
+        } 
+        else {
+            return (
+            <div className="hidden__icon">
+                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+            </div> 
+            )
+        
+    }
+    }
+    isEmptyIn () {
+
+        if (this.props.cardInfo.linkedin !== '') { 
+            return (
+                <div>
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="fab fa-linkedin-in"></i></li>
+                </div>
+            
+            )
+            
+        } 
+        else {
+            return (
+            <div className="hidden__icon">
+                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
             </div> 
             )
         
@@ -38,11 +95,11 @@ class EditCard extends Component {
                     </div>
                     <div className="profile-pic"></div>
                     <div className="social-media">
-                        <ul className="social-media__list"> {this.isEmpty()}
-                            {/* <li className=" contact-list__tlf list__item--tel">{this.props.cardInfo.phone}</li> */}
-                            <li className=" contact-list__mail list__item--mail">{this.props.cardInfo.email}</li>
-                            <li className="contact-list__linkedin list__item--linkedin">{this.props.cardInfo.linkedin}</li>
-                            <li className=" contact-list__github list__item--github">{this.props.cardInfo.github}</li>
+                        <ul className="social-media__list"> 
+                            {this.isEmptyPhone()}
+                            {this.isEmptyEmail()}
+                            {this.isEmptyGithub()}
+                            {this.isEmptyIn()}
                         </ul>
                     </div>
                     <div className="skills">
