@@ -17,7 +17,7 @@ class EditCard extends Component {
         else {
             return (
             <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+                <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
             </div> 
             )
         
@@ -37,7 +37,7 @@ class EditCard extends Component {
         else {
             return (
             <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+                <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
             </div> 
             )
         
@@ -57,7 +57,7 @@ class EditCard extends Component {
         else {
             return (
             <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+                <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
             </div> 
             )
         
@@ -77,7 +77,7 @@ class EditCard extends Component {
         else {
             return (
             <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel hidden__icon social-media__icon"></li>
+                <li className=" contact-list__tlf list__item--tel  social-media__icon"></li>
             </div> 
             )
         
