@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-const skillsApi = 'https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json';
-
+import {fetchSkills} from '../services/SkillsApi';
 
 class FillCard extends Component {
     constructor(props){
@@ -19,11 +17,9 @@ class FillCard extends Component {
     }
     
     getSkills () {
-        fetch(skillsApi)
-        .then(response=>response.json())
-        .then(data=>{
-            console.log(data);
-           
+        fetchSkills()
+         .then(data=>{
+                       
             this.setState({
                 skillArray : data.skills
             })
