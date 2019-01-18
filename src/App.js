@@ -30,11 +30,10 @@ class App extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handleLinkedin = this.handleLinkedin.bind(this);
         this.handleGithub = this.handleGithub.bind(this);
-        this.writeImage = this.writeImage.bind(this);
+        this.handleUrl = this.handleUrl.bind(this);
     }
     
-    writeImage(fr) {
-        const url = fr.result;
+    handleUrl(url) {
         this.setState({
             card: { ...this.state.card, photo: url }
         });
@@ -90,8 +89,10 @@ class App extends React.Component {
 
     render() {
         return (
+            
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} />
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl}/>
+
         );
     }
 }

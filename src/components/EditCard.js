@@ -93,7 +93,9 @@ class EditCard extends Component {
                         <h1 className="h1-description">{this.props.cardInfo.name}</h1>
                         <p className="text-description">{this.props.cardInfo.job}</p>
                     </div>
-                    <div className="profile-pic"></div>
+                    <div className="profile-pic">
+                    <img src={this.props.cardInfo.photo}></img>
+                    </div>
                     <div className="social-media">
                         <ul className="social-media__list"> 
                             {this.isEmptyPhone()}

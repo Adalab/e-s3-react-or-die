@@ -15,16 +15,21 @@ class ProfilePic extends Component {
 
     }
 
+    writeImage() {
+        const url = fr.result;
+        this.props.handleUrl(url);
+    }    
+
     fakeClick(){
         this.fileInput.current.click();
-      }
+    }
 
     handleFileChange(e) {
         const myFile = e.currentTarget.files[0];
         
-        fr.addEventListener('load', this.writeImage);
+        fr.addEventListener('load', this.writeImage());
         fr.readAsDataURL(myFile);
-        };
+    };
 
     render() {
         return (
