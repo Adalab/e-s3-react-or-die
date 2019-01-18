@@ -3,18 +3,6 @@ import CardIndex from './components/CardIndex';
 import './App.scss';
 
 
-const skillsArray = [
-    'HTML',
-    'CSS',
-    'Sass',
-    'Git',
-    'Gulp',
-    'JavaScript',
-    'AJAX',
-    'React'
-]
-
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -94,7 +82,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <CardIndex skillsArray={skillsArray} handleName={this.handleName}
+            <CardIndex handleName={this.handleName}
                 handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} />
         );
     }

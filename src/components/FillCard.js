@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
+import {fetchSkills} from '../services/SkillsApi';
 
 class FillCard extends Component {
+    constructor(props){
+        super(props);
+
+         this.state = {
+            skillArray : [] 
+               
+        }
+        this.getSkills = this.getSkills.bind(this);
+    }
+
+    componentDidMount() {
+        this.getSkills();
+    }
+    
+    getSkills () {
+        fetchSkills()
+         .then(data=>{
+                       
+            this.setState({
+                skillArray : data.skills
+            })
+            
+        })
+    }
     render() {
-        const skillsArray = this.props.skillsArray;
-      
         return (
             <React.Fragment>
+            
 
                 <fieldset>
                     <div className="collapsible">
@@ -63,10 +87,10 @@ class FillCard extends Component {
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
                                     <ul className="container__skills-list">  
-                                    {skillsArray.map((skill,i)=>{
+                                    {this.state.skillArray.map((item, index)=>{
                                         return(
-                                            <li key={i}><label htmlFor={skill} className="input-skills"><input className="maxCheck" id={skill} type="checkbox" value={skill} name="skills"></input>{skill}</label></li>
-                                        )
+                                            <li><label htmlFor={item} className="input-skills"><input className="maxCheck" id={index} type="checkbox" value={item} name="skills"></input>{item}</label></li>                                  
+                                        );
                                     })}
                                     </ul>
                                 </div>
