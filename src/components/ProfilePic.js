@@ -8,10 +8,11 @@ class ProfilePic extends Component {
         super(props);
     
         this.fileInput = React.createRef();
-        const fileURL = '../images/darth_vader.jpg';
+        // const fileURL = '../images/darth_vader.jpg';
 
     this.fakeClick = this.fakeClick.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
+    this.writeImage = this.writeImage.bind(this);
 
     }
 
@@ -27,7 +28,7 @@ class ProfilePic extends Component {
     handleFileChange(e) {
         const myFile = e.currentTarget.files[0];
         
-        fr.addEventListener('load', this.writeImage());
+        fr.addEventListener('load', this.writeImage);
         fr.readAsDataURL(myFile);
     };
 
