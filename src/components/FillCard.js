@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {fetchSkills} from '../services/SkillsApi';
+import ProfilePic from './ProfilePic';
 
 class FillCard extends Component {
     constructor(props){
@@ -56,8 +57,9 @@ class FillCard extends Component {
                                     <label htmlFor="imagen" className="form-label">Imagen de Perfil</label>
                                     <div className="collapsible__upload-file">
                                         <input type="file" id="img-selector" name="img-selector" className="action_hiddenField" />
-                                        <button className="btn--img" type="button">Añadir Imagen</button>
-                                        <div className="uploadFile"></div>
+                                        <ProfilePic  cardInfo={this.props.cardInfo}/>  
+                                        {/* <button className="btn--img" type="button">Añadir Imagen</button>
+                                        <div className="uploadFile"></div> */}
                                     </div>
                                 </div>
                             </div>

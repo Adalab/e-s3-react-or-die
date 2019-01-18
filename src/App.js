@@ -30,8 +30,15 @@ class App extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handleLinkedin = this.handleLinkedin.bind(this);
         this.handleGithub = this.handleGithub.bind(this);
+        this.writeImage = this.writeImage.bind(this);
     }
     
+    writeImage(fr) {
+        const url = fr.result;
+        this.setState({
+            card: { ...this.state.card, photo: url }
+        });
+    }
 
     handleName(event) {
         this.setState({
