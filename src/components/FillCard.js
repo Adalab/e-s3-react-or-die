@@ -89,7 +89,7 @@ class FillCard extends Component {
                                     <ul className="container__skills-list">  
                                     {this.state.skillArray.map((item, index)=>{
                                         return(
-                                            <li><label htmlFor={item} className="input-skills"><input className="maxCheck" id={index} type="checkbox" value={item} name="skills"></input>{item}</label></li>                                  
+                                            <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills"></input>{item}</label></li>                                  
                                         );
                                     })}
                                     </ul>

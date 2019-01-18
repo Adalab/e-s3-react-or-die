@@ -29,6 +29,7 @@ class App extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handleLinkedin = this.handleLinkedin.bind(this);
         this.handleGithub = this.handleGithub.bind(this);
+        this.handleColor = this.handleColor.bind(this);
     }
 
 
@@ -49,21 +50,18 @@ class App extends React.Component {
         this.setState({
             card: { ...this.state.card, phone: event.currentTarget.value }
         });
-
     }
 
     handleEmail(event) {
         this.setState({
             card: { ...this.state.card, email: event.currentTarget.value }
         });
-
     }
 
     handleLinkedin(event) {
         this.setState({
             card: { ...this.state.card, linkedin: event.currentTarget.value }
         });
-
     }
 
     handleGithub(event) {
@@ -77,13 +75,28 @@ class App extends React.Component {
         this.setState({
             card: { ...this.state.card, photo: event.currentTarget.value }
         });
+    }
 
+    handleColor(e){
+        if (e.currentTarget.value === "1"){
+            this.setState({
+                card: { ...this.state.card, palette: e.currentTarget.value}
+            });
+        } else if (e.currentTarget.value === "2"){
+            this.setState({
+                card: { ...this.state.card, palette: e.currentTarget.value}
+            });
+        } else if (e.currentTarget.value === "3"){
+            this.setState({
+                card: { ...this.state.card, palette: e.currentTarget.value}
+            });
+        }
     }
 
     render() {
         return (
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} />
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleColor={this.handleColor}/>
         );
     }
 }
