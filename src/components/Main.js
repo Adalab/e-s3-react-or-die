@@ -8,7 +8,7 @@ class Main extends Component {
         return (
             <div className="main-section">
                 <EditCard />
-                <FormContainer skillsArray = {this.props.skillsArray}/>
+                <FormContainer />
             </div>
         );
     }

@@ -9,7 +9,7 @@ class CardIndex extends Component {
         return (
             <React.Fragment>
                 <Header/>
-                <Main skillsArray = {this.props.skillsArray}/>
+                <Main />
                 <Footer/>
             </React.Fragment>
         );
