@@ -2,6 +2,7 @@ import React from 'react';
 import CardIndex from './components/CardIndex';
 import './App.scss';
 
+const defaultImg = '../images/darth_vader.jpg';
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
                 email: '',
                 linkedin: '',
                 github: '',
-                photo: '',
+                photo: defaultImg,
                 skills: ['HTML', 'Sass', 'JavaScript']
             }
 
@@ -30,7 +31,7 @@ class App extends React.Component {
         this.handleLinkedin = this.handleLinkedin.bind(this);
         this.handleGithub = this.handleGithub.bind(this);
     }
-
+    
 
     handleName(event) {
         this.setState({
