@@ -1,8 +1,7 @@
 import React from 'react';
 import CardIndex from './components/CardIndex';
 import './App.scss';
-
-const defaultImg = '../images/darth_vader.jpg';
+import darth from './images/darth.jpg';
 
 class App extends React.Component {
     constructor(props) {
@@ -18,7 +17,7 @@ class App extends React.Component {
                 email: '',
                 linkedin: '',
                 github: '',
-                photo: defaultImg,
+                photo: darth,
                 skills: ['HTML', 'Sass', 'JavaScript']
             }
 

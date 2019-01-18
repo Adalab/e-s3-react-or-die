@@ -94,7 +94,7 @@ class EditCard extends Component {
                         <p className="text-description">{this.props.cardInfo.job}</p>
                     </div>
                     <div className="profile-pic">
-                    <img src={this.props.cardInfo.photo}></img>
+                    <img className="user-pic" src={this.props.cardInfo.photo} alt="user_image"></img>
                     </div>
                     <div className="social-media">
                         <ul className="social-media__list"> 
