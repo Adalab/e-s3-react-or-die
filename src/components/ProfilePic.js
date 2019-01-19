@@ -8,16 +8,17 @@ class ProfilePic extends Component {
         super(props);
     
         this.fileInput = React.createRef();
-        // const fileURL = '../images/darth_vader.jpg';
+        this.previewImage = '';
 
-    this.fakeClick = this.fakeClick.bind(this);
-    this.handleFileChange = this.handleFileChange.bind(this);
-    this.writeImage = this.writeImage.bind(this);
+        this.fakeClick = this.fakeClick.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
+        this.writeImage = this.writeImage.bind(this);
 
     }
 
     writeImage() {
         const url = fr.result;
+        this.previewImage = url;
         this.props.handleUrl(url);
     }    
 
@@ -37,7 +38,7 @@ class ProfilePic extends Component {
             <React.Fragment>
                  <input type="file" className="hidden__icon" ref={this.fileInput} onChange={this.handleFileChange} />
                 <button className="btn--img" type="button" onClick={this.fakeClick}>Añadir Imagen</button>    
-                <div className="uploadFile" style={{backgroundImage: `url(${this.props.cardInfo.photo})` }}></div>
+                <div className="uploadFile" style={{backgroundImage: `url(${this.previewImage})` }}></div>
 
             </React.Fragment>
         );
