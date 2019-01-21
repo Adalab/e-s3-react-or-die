@@ -21,7 +21,8 @@ class App extends React.Component {
                 skills: ['HTML', 'Sass', 'JavaScript']
             },
 
-            colors: 'cold'
+            colors: '',
+            typo: ''
 
         }
 
@@ -32,6 +33,7 @@ class App extends React.Component {
         this.handleLinkedin = this.handleLinkedin.bind(this);
         this.handleGithub = this.handleGithub.bind(this);
         this.handleColor = this.handleColor.bind(this);
+        this.handleTypo = this.handleTypo.bind(this);
     }
 
 
@@ -98,10 +100,29 @@ class App extends React.Component {
         }
     }
 
+    handleTypo(e){
+        if (e.currentTarget.value === "1"){
+            this.setState({
+                card: { ...this.state.card, typography: e.currentTarget.value},
+                typo: e.currentTarget.id
+            });
+        } else if (e.currentTarget.value === "2"){
+            this.setState({
+                card: { ...this.state.card, typography: e.currentTarget.value},
+                typo: e.currentTarget.id
+            });
+        } else if (e.currentTarget.value === "3"){
+            this.setState({
+                card: { ...this.state.card, typography: e.currentTarget.value},
+                typo: e.currentTarget.id
+            });
+        }
+    }
+
     render() {
         return (
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleColor={this.handleColor} colors={this.state.colors}/>
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo}/>
         );
     }
 }

@@ -52,20 +52,20 @@ class DesignCard extends Component {
                                 <h3 className="subtitle__collapsible">Fuentes</h3>
                                 <ul className="fonts___list">
                                     <li>
-                                        <label htmlFor="ubuntu" className="typography ubuntu">
-                                            <input type="radio" id="ubuntu" name="fonts" className="radio" value="1" />
+                                        <label htmlFor="fonts" className="typography ubuntu">
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-ubuntu" name="fonts" className="radio" value="1" />
                                             <p className="ubuntu">Ubuntu</p>
                                         </label>
                                     </li>
                                     <li>
-                                        <label htmlFor="comic" className="typography comic" defaultChecked>
-                                            <input type="radio" id="comic" name="fonts" className="radio" value="2" />
+                                        <label htmlFor="fonts" className="typography comic" defaultChecked>
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-comic" name="fonts" className="radio" value="2" />
                                             <p className="comic">Comic Sans</p>
                                         </label>
                                     </li>
                                     <li>
-                                        <label htmlFor="monserrat" className="typography monserrat">
-                                            <input type="radio" id="monserrat" name="fonts" className="radio" value="3" />
+                                        <label htmlFor="fonts" className="typography monserrat">
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-monserrat" name="fonts" className="radio" value="3" />
                                             <p className="monserrat">Monserrat</p>
                                         </label>
                                     </li>
