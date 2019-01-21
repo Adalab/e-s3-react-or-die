@@ -84,12 +84,13 @@ class EditCard extends Component {
     }
     }
     render() {
+        console.log('pslrts', this.props.colors);
         const editCard = (
             <section className="section__card">
                 <ResetBtn/>
-                <div className="section__card-content">
+                <div className={`section__card-content ${this.props.colors}`}>
                     <div className="description">
-                        <div className={`rectangle ${this.props.colors}`}></div>
+                        <div className="rectangle"></div>
                         <h1 className="h1-description">{this.props.cardInfo.name}</h1>
                         <p className="text-description">{this.props.cardInfo.job}</p>
                     </div>
