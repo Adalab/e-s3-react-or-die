@@ -89,7 +89,7 @@ class EditCard extends Component {
                 <ResetBtn/>
                 <div className="section__card-content">
                     <div className="description">
-                        <div className="rectangle"></div>
+                        <div className={`rectangle ${this.props.colors}`}></div>
                         <h1 className="h1-description">{this.props.cardInfo.name}</h1>
                         <p className="text-description">{this.props.cardInfo.job}</p>
                     </div>

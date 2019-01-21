@@ -19,7 +19,9 @@ class App extends React.Component {
                 github: '',
                 photo: '',
                 skills: ['HTML', 'Sass', 'JavaScript']
-            }
+            },
+
+            colors: 'orange-palette'
 
         }
 
@@ -96,7 +98,7 @@ class App extends React.Component {
     render() {
         return (
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleColor={this.handleColor}/>
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleColor={this.handleColor} colors={this.state.colors}/>
         );
     }
 }
