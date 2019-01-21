@@ -7,8 +7,7 @@ class FillCard extends Component {
         super(props);
 
          this.state = {
-            skillArray : [] 
-               
+            skillArray : []
         }
         this.getSkills = this.getSkills.bind(this);
     }
@@ -16,22 +15,63 @@ class FillCard extends Component {
     componentDidMount() {
         this.getSkills();
     }
-    
+
     getSkills () {
         fetchSkills()
          .then(data=>{
-                       
             this.setState({
                 skillArray : data.skills
             })
-            
         })
     }
+    // addSkills(e){
+    //     const check = e.currentTarget;
+    //     const currentSkill = this.state.skillArray.slice(0);
+    //     const newSkill = e.currentTarget.value;
+    //     const isChecked = check.checked;
+
+    //     if (isChecked){
+    //         //Está marcado
+
+    //         if (currentSkill.length < 3){
+    //             currentSkill.push(newSkill)
+    //             const newCard = {...this.props.cardInfo.skill, skill:currentSkill}
+    //             const {card} = this.state;
+    //             this.setState({
+    //                 card: {...card, skill : newCard}
+    //             })
+    //         } else {
+    //             check.checked = false;
+    //         }
+    //     }
+    // }
+    addSkillorNot(e){
+        const currentSkills = this.props.skillArray.slice(0);
+        const check = e.currentTarget;
+        const newSkill = e.currentTarget.value;
+        const isChecked = check.checked;
+        if (currentSkills.length < 3 && isChecked) {
+          // Está marcado y hay menos de 3 skills
+          currentSkills.push(newSkill);
+        } else {
+          // No está marcado o hay 3 skills o más
+          check.checked = false;
+          // si existe tengo que borrarlo
+          const index = currentSkills.indexOf(newSkill);
+          if (index > -1) {
+            currentSkills.splice(index, 1);
+          }
+        }
+        const newCard = {...this.props.cardInfo, skills: currentSkills};
+        this.saveCard(newCard);
+        this.setState({
+          card: newCard
+        });
+      }
+
     render() {
         return (
             <React.Fragment>
-            
-
                 <fieldset>
                     <div className="collapsible">
                         <div className="collapsible__clickable collapsible__fill">
@@ -57,7 +97,7 @@ class FillCard extends Component {
                                     <label htmlFor="imagen" className="form-label">Imagen de Perfil</label>
                                     <div className="collapsible__upload-file">
                                         <input type="file" id="img-selector" name="img-selector" className="action_hiddenField" />
-                                        <ProfilePic  cardInfo={this.props.cardInfo} handleUrl = {this.props.handleUrl}/>  
+                                        <ProfilePic  cardInfo={this.props.cardInfo} handleUrl = {this.props.handleUrl}/>
                                     </div>
                                 </div>
                             </div>
@@ -86,10 +126,10 @@ class FillCard extends Component {
                             </div>
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
-                                    <ul className="container__skills-list">  
+                                    <ul className="container__skills-list">
                                     {this.state.skillArray.map((item, index)=>{
                                         return(
-                                            <li><label htmlFor={item} className="input-skills"><input className="maxCheck" id={index} type="checkbox" value={item} name="skills"></input>{item}</label></li>                                  
+                                            <li><label htmlFor={`skills--${index}`}  className="input-skills"><input className="maxCheck" id={`skills--${index}`} onClick={this.addSkillorNot}type="checkbox" value={item} name="skills"/>{item}</label></li>
                                         );
                                     })}
                                     </ul>

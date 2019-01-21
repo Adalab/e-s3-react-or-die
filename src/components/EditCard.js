@@ -1,92 +1,80 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ResetBtn from './ResetBtn';
 
 
 class EditCard extends Component {
-    isEmptyPhone () {
+    isEmptyPhone() {
 
-        if (this.props.cardInfo.phone !== '') { 
+        if (this.props.cardInfo.phone !== '') {
             return (
                 <div>
                     <li className=" contact-list__tlf list__item--tel social-media__icon"><i className="fas fa-mobile-alt"></i></li>
                 </div>
-            
             )
-            
-        } 
+        }
         else {
             return (
-            <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
-            </div> 
+                <div className="hidden__icon">
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
+                </div>
             )
-        
+        }
     }
-    }
-    isEmptyEmail () {
+    isEmptyEmail() {
 
-        if (this.props.cardInfo.email !== '') { 
+        if (this.props.cardInfo.email !== '') {
             return (
                 <div>
                     <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="far fa-envelope"></i></li>
                 </div>
-            
             )
-            
-        } 
+        }
         else {
             return (
-            <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
-            </div> 
+                <div className="hidden__icon">
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
+                </div>
             )
-        
+        }
     }
-    }
-    isEmptyGithub () {
+    isEmptyGithub() {
 
-        if (this.props.cardInfo.github !== '') { 
+        if (this.props.cardInfo.github !== '') {
             return (
                 <div>
                     <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="fab fa-github-alt"></i></li>
                 </div>
-            
             )
-            
-        } 
+        }
         else {
             return (
-            <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
-            </div> 
+                <div className="hidden__icon">
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"></li>
+                </div>
             )
-        
+        }
     }
-    }
-    isEmptyIn () {
+    isEmptyIn() {
 
-        if (this.props.cardInfo.linkedin !== '') { 
+        if (this.props.cardInfo.linkedin !== '') {
             return (
                 <div>
                     <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="fab fa-linkedin-in"></i></li>
                 </div>
-            
             )
-            
-        } 
+        }
         else {
             return (
-            <div className="hidden__icon">
-                <li className=" contact-list__tlf list__item--tel  social-media__icon"></li>
-            </div> 
+                <div className="hidden__icon">
+                    <li className=" contact-list__tlf list__item--tel  social-media__icon"></li>
+                </div>
             )
-        
-    }
+        }
     }
     render() {
         const editCard = (
             <section className="section__card">
-                <ResetBtn/>
+                <ResetBtn />
                 <div className="section__card-content">
                     <div className="description">
                         <div className="rectangle"></div>
@@ -94,10 +82,10 @@ class EditCard extends Component {
                         <p className="text-description">{this.props.cardInfo.job}</p>
                     </div>
                     <div className="profile-pic">
-                    <img className="user-pic" src={this.props.cardInfo.photo} alt="user_image"></img>
+                        <img className="user-pic" src={this.props.cardInfo.photo} alt="user_image"></img>
                     </div>
                     <div className="social-media">
-                        <ul className="social-media__list"> 
+                        <ul className="social-media__list">
                             {this.isEmptyPhone()}
                             {this.isEmptyEmail()}
                             {this.isEmptyGithub()}

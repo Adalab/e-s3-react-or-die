@@ -18,7 +18,7 @@ class App extends React.Component {
                 linkedin: '',
                 github: '',
                 photo: darth,
-                skills: ['HTML', 'Sass', 'JavaScript']
+                skills: []
             }
 
         }
@@ -88,7 +88,6 @@ class App extends React.Component {
 
     render() {
         return (
-            
             <CardIndex handleName={this.handleName}
                 handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl}/>
 
