@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {fetchSkills} from '../services/SkillsApi';
 import ProfilePic from './ProfilePic';
 
+const currentSkills = [];
 class FillCard extends Component {
     constructor(props){
         super(props);
@@ -10,6 +11,7 @@ class FillCard extends Component {
             skillArray : []
         }
         this.getSkills = this.getSkills.bind(this);
+        this.addSkillorNot = this.addSkillorNot.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +26,8 @@ class FillCard extends Component {
             })
         })
     }
+
+
     // addSkills(e){
     //     const check = e.currentTarget;
     //     const currentSkill = this.state.skillArray.slice(0);
@@ -46,14 +50,31 @@ class FillCard extends Component {
     //     }
     // }
     addSkillorNot(e){
-        const currentSkills = this.props.skillArray.slice(0);
+
+        /** Esto no sé para que es
+        const card = this.props.cardInfo;
+        const currentSkills = card.skills.slice(0);
+        */
+        
         const check = e.currentTarget;
         const newSkill = e.currentTarget.value;
         const isChecked = check.checked;
+        // currentSkills.push('holi');
+        // currentSkills.push('me llamo');
+        // currentSkills.push('me llamo');
+        //currentSkills.push('me llamo');
+        
+        
+
         if (currentSkills.length < 3 && isChecked) {
+    
           // Está marcado y hay menos de 3 skills
           currentSkills.push(newSkill);
+          console.log("dentro del if");
+          console.log(currentSkills.length);
+          
         } else {
+            console.log('en el else');
           // No está marcado o hay 3 skills o más
           check.checked = false;
           // si existe tengo que borrarlo
@@ -62,16 +83,38 @@ class FillCard extends Component {
             currentSkills.splice(index, 1);
           }
         }
+
+        // if (currentSkills.length > 2) {
+
+        //     console.log(currentSkills);
+        //     // No está marcado o hay 3 skills o más
+        //     check.checked = false;
+        //     // si existe tengo que borrarlo
+        //     const index = currentSkills.indexOf(newSkill);
+        //     if (index > -1) {
+        //       currentSkills.splice(index, 1);
+        //     }
+            
+            
+        //   } else {
+        //       // Está marcado y hay menos de 3 skills
+        //     currentSkills.push(newSkill);
+             
+        //     }
+            console.log('despues del if',currentSkills);
+            console.log(currentSkills.length);
+
         const newCard = {...this.props.cardInfo, skills: currentSkills};
-        this.saveCard(newCard);
-        this.setState({
-          card: newCard
-        });
+        // this.saveCard(newCard);
+        // this.setState({
+        //   card: newCard
+        // });
       }
 
     render() {
         return (
             <React.Fragment>
+                
                 <fieldset>
                     <div className="collapsible">
                         <div className="collapsible__clickable collapsible__fill">
