@@ -1,7 +1,7 @@
 import React from 'react';
 import CardIndex from './components/CardIndex';
 import './App.scss';
-
+import darth from './images/darth.jpg';
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class App extends React.Component {
                 email: '',
                 linkedin: '',
                 github: '',
-                photo: '',
+                photo: darth,
                 skills: ['HTML', 'Sass', 'JavaScript']
             }
 
@@ -29,8 +29,14 @@ class App extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handleLinkedin = this.handleLinkedin.bind(this);
         this.handleGithub = this.handleGithub.bind(this);
+        this.handleUrl = this.handleUrl.bind(this);
     }
-
+    
+    handleUrl(url) {
+        this.setState({
+            card: { ...this.state.card, photo: url }
+        });
+    }
 
     handleName(event) {
         this.setState({
@@ -82,8 +88,10 @@ class App extends React.Component {
 
     render() {
         return (
+            
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} />
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl}/>
+
         );
     }
 }
