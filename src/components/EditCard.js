@@ -87,7 +87,7 @@ class EditCard extends Component {
         const editCard = (
             <section className="section__card">
                 <ResetBtn/>
-                <div className="section__card-content">
+                <div className={`section__card-content ${this.props.colors} ${this.props.typo}`}>
                     <div className="description">
                         <div className="rectangle"></div>
                         <h1 className="h1-description">{this.props.cardInfo.name}</h1>
