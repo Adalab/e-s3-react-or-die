@@ -32,7 +32,7 @@ class DesignCard extends Component {
                                     </li>
                                     <li>
                                         <label htmlFor="colors" className="theme orange">
-                                            <input onClick={this.props.handleColor} type="radio" id="warm" name="colors" className="radio" value="2" />
+                                            <input onClick={this.props.handleColor} type="radio" id="orange-palette" name="colors" className="radio" value="2" />
                                             <div className="colors__list" style={{ backgroundColor: "#420101" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#bd1010" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#e95626" }}></div>
@@ -40,7 +40,7 @@ class DesignCard extends Component {
                                     </li>
                                     <li>
                                         <label htmlFor="colors" className="theme blue">
-                                            <input onClick={this.props.handleColor} type="radio" id="formal" name="colors" className="radio" value="3" />
+                                            <input onClick={this.props.handleColor} type="radio" id="blue-palette" name="colors" className="radio" value="3" />
                                             <div className="colors__list" style={{ backgroundColor: "#3e5b65" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#dfe5eb" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#a0c0cf" }}></div>

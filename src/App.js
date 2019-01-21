@@ -21,7 +21,7 @@ class App extends React.Component {
                 skills: ['HTML', 'Sass', 'JavaScript']
             },
 
-            colors: 'orange-palette'
+            colors: 'cold'
 
         }
 
@@ -82,15 +82,18 @@ class App extends React.Component {
     handleColor(e){
         if (e.currentTarget.value === "1"){
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value}
+                card: { ...this.state.card, palette: e.currentTarget.value},
+                colors: e.currentTarget.id
             });
         } else if (e.currentTarget.value === "2"){
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value}
+                card: { ...this.state.card, palette: e.currentTarget.value},
+                colors: e.currentTarget.id
             });
         } else if (e.currentTarget.value === "3"){
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value}
+                card: { ...this.state.card, palette: e.currentTarget.value},
+                colors: e.currentTarget.id
             });
         }
     }

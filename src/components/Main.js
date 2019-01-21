@@ -7,7 +7,7 @@ class Main extends Component {
         return (
             <div className="main-section">
                 <EditCard cardInfo={this.props.cardInfo} colors={this.props.colors}/>
-                <FormContainer handleName = {this.props.handleName} handleJob = {this.props.handleJob} handlePhone = {this.props.handlePhone} handleEmail = {this.props.handleEmail} handleLinkedin = {this.props.handleLinkedin} handleGithub = {this.props.handleGithub} handlePhoto = {this.props.handlePhoto} />
+                <FormContainer handleName = {this.props.handleName} handleJob = {this.props.handleJob} handlePhone = {this.props.handlePhone} handleEmail = {this.props.handleEmail} handleLinkedin = {this.props.handleLinkedin} handleGithub = {this.props.handleGithub} handlePhoto = {this.props.handlePhoto} handleColor={this.props.handleColor} />
             </div>
         );
     }

@@ -84,7 +84,7 @@ class EditCard extends Component {
     }
     }
     render() {
-        console.log('pslrts', this.props.colors);
+        console.log(this.props.colors);
         const editCard = (
             <section className="section__card">
                 <ResetBtn/>
