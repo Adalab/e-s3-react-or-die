@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import {fetchSkills} from '../services/SkillsApi';
+import { fetchSkills } from '../services/SkillsApi';
 import ProfilePic from './ProfilePic';
 
 const currentSkills = [];
 class FillCard extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
-         this.state = {
-            skillArray : []
-        }
+        this.state = {
+            skillArray: [],
+            card:{
+                chosenSkills:[]
+            }
+        };
         this.getSkills = this.getSkills.bind(this);
         this.addSkillorNot = this.addSkillorNot.bind(this);
     }
@@ -18,103 +21,40 @@ class FillCard extends Component {
         this.getSkills();
     }
 
-    getSkills () {
+    getSkills() {
         fetchSkills()
-         .then(data=>{
-            this.setState({
-                skillArray : data.skills
+            .then(data => {
+                this.setState({
+                    skillArray: data.skills
+                })
             })
-        })
     }
-
-
-    // addSkills(e){
-    //     const check = e.currentTarget;
-    //     const currentSkill = this.state.skillArray.slice(0);
-    //     const newSkill = e.currentTarget.value;
-    //     const isChecked = check.checked;
-
-    //     if (isChecked){
-    //         //Está marcado
-
-    //         if (currentSkill.length < 3){
-    //             currentSkill.push(newSkill)
-    //             const newCard = {...this.props.cardInfo.skill, skill:currentSkill}
-    //             const {card} = this.state;
-    //             this.setState({
-    //                 card: {...card, skill : newCard}
-    //             })
-    //         } else {
-    //             check.checked = false;
-    //         }
-    //     }
-    // }
-    addSkillorNot(e){
-
-        /** Esto no sé para que es
-        const card = this.props.cardInfo;
-        const currentSkills = card.skills.slice(0);
-        */
-        
+    addSkillorNot(e) {
+        const {card} = this.state;
+        const currentSkills = card.chosenSkills.slice(0);
         const check = e.currentTarget;
         const newSkill = e.currentTarget.value;
         const isChecked = check.checked;
-        // currentSkills.push('holi');
-        // currentSkills.push('me llamo');
-        // currentSkills.push('me llamo');
-        //currentSkills.push('me llamo');
-        
-        
 
         if (currentSkills.length < 3 && isChecked) {
-    
-          // Está marcado y hay menos de 3 skills
-          currentSkills.push(newSkill);
-          console.log("dentro del if");
-          console.log(currentSkills.length);
-          
+            currentSkills.push(newSkill);
         } else {
-            console.log('en el else');
-          // No está marcado o hay 3 skills o más
-          check.checked = false;
-          // si existe tengo que borrarlo
-          const index = currentSkills.indexOf(newSkill);
-          if (index > -1) {
-            currentSkills.splice(index, 1);
-          }
+            check.checked = false;
+            const index = currentSkills.indexOf(newSkill);
+            if (index > -1) {
+                currentSkills.splice(index, 1);
+            }
         }
-
-        // if (currentSkills.length > 2) {
-
-        //     console.log(currentSkills);
-        //     // No está marcado o hay 3 skills o más
-        //     check.checked = false;
-        //     // si existe tengo que borrarlo
-        //     const index = currentSkills.indexOf(newSkill);
-        //     if (index > -1) {
-        //       currentSkills.splice(index, 1);
-        //     }
-            
-            
-        //   } else {
-        //       // Está marcado y hay menos de 3 skills
-        //     currentSkills.push(newSkill);
-             
-        //     }
-            console.log('despues del if',currentSkills);
-            console.log(currentSkills.length);
-
-        const newCard = {...this.props.cardInfo, skills: currentSkills};
-        // this.saveCard(newCard);
-        // this.setState({
-        //   card: newCard
-        // });
-      }
+        const newCard = { ...card, chosenSkills: currentSkills };
+        this.setState({
+          card: newCard
+        });
+    }
 
     render() {
         return (
             <React.Fragment>
-                
+
                 <fieldset>
                     <div className="collapsible">
                         <div className="collapsible__clickable collapsible__fill">
@@ -129,18 +69,18 @@ class FillCard extends Component {
                         <div className="collapsible__content-fill ">
                             <div className="collapsible__content-form">
                                 <label htmlFor="name" className="form-label form-label--name">Nombre completo</label>
-                                <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input"  onKeyUp={this.props.handleName}/>
+                                <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input" onKeyUp={this.props.handleName} />
                             </div>
                             <div className="collapsible__content-form">
                                 <label htmlFor="puesto" className="form-label form-label--puesto">Puesto</label>
-                                <input type="text" name="puesto" id="puesto" placeholder="Ej: Front-end unicorn" className="form-input" onKeyUp={this.props.handleJob}/>
+                                <input type="text" name="puesto" id="puesto" placeholder="Ej: Front-end unicorn" className="form-input" onKeyUp={this.props.handleJob} />
                             </div>
                             <div className="collapsible__content-form">
                                 <div className="container__btn-img">
                                     <label htmlFor="imagen" className="form-label">Imagen de Perfil</label>
                                     <div className="collapsible__upload-file">
                                         <input type="file" id="img-selector" name="img-selector" className="action_hiddenField" />
-                                        <ProfilePic  cardInfo={this.props.cardInfo} handleUrl = {this.props.handleUrl}/>
+                                        <ProfilePic cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} />
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +92,7 @@ class FillCard extends Component {
                             <div className="collapsible__content-form">
                                 <label htmlFor="phone" className="form-label">Teléfono</label>
                                 <input type="tel" id="phone" name="phone" placeholder="Ej: 555-55-55-55" className="form-input"
-                                    data-common="tel:" data-ico="fas fa-mobile-alt" data-dest=".list__item--tel" onKeyUp={this.props.handlePhone}/>
+                                    data-common="tel:" data-ico="fas fa-mobile-alt" data-dest=".list__item--tel" onKeyUp={this.props.handlePhone} />
                             </div>
                             <div className="collapsible__content-form">
                                 <label htmlFor="linkedin" className="form-label">Linkedin</label>
@@ -162,7 +102,7 @@ class FillCard extends Component {
                             <div className="collapsible__content-form">
                                 <label htmlFor="github" className="form-label">Github</label>
                                 <input type="" name="github" id="github" placeholder="Ej: @sally-hill" className="form-input"
-                                    data-common="https://github.com/" data-ico="fab fa-github-alt" data-dest=".list__item--github" onKeyUp={this.props.handleGithub}/>
+                                    data-common="https://github.com/" data-ico="fab fa-github-alt" data-dest=".list__item--github" onKeyUp={this.props.handleGithub} />
                             </div>
                             <div className="container__skill--title">
                                 <p className="skills">Habilidades (máximo 3)</p>
@@ -170,11 +110,11 @@ class FillCard extends Component {
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
                                     <ul className="container__skills-list">
-                                    {this.state.skillArray.map((item, index)=>{
-                                        return(
-                                            <li><label htmlFor={`skills--${index}`}  className="input-skills"><input className="maxCheck" id={`skills--${index}`} onClick={this.addSkillorNot}type="checkbox" value={item} name="skills"/>{item}</label></li>
-                                        );
-                                    })}
+                                        {this.state.skillArray.map((item, index) => {
+                                            return (
+                                                <li><label htmlFor={`skills--${index}`} className="input-skills"><input className="maxCheck" id={`skills--${index}`} onClick={this.addSkillorNot} type="checkbox" value={item} name="skills" />{item}</label></li>
+                                            );
+                                        })}
                                     </ul>
                                 </div>
                             </div>
