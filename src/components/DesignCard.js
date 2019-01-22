@@ -58,8 +58,8 @@ class DesignCard extends Component {
                                         </label>
                                     </li>
                                     <li>
-                                        <label htmlFor="fonts" className="typography comic" defaultChecked>
-                                            <input onChange={this.props.handleTypo} type="radio" id="font-comic" name="fonts" className="radio" value="2" />
+                                        <label htmlFor="fonts" className="typography comic">
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-comic" name="fonts" className="radio" value="2" defaultChecked/>
                                             <p className="comic">Comic Sans</p>
                                         </label>
                                     </li>
