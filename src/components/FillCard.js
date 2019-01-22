@@ -1,32 +1,8 @@
 import React, { Component } from 'react';
-import { fetchSkills } from '../services/SkillsApi';
 import ProfilePic from './ProfilePic';
 
 class FillCard extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            skillArray: [],
-        };
-        this.getSkills = this.getSkills.bind(this);
-    }
-
-    componentDidMount() {
-        this.getSkills();
-    }
-
-    getSkills() {
-        fetchSkills()
-            .then(data => {
-                this.setState({
-                    skillArray: data.skills
-                })
-            })
-    }
-
-
-    render() {
+   render() {
         return (
             <React.Fragment>
 
@@ -85,7 +61,7 @@ class FillCard extends Component {
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
                                     <ul className="container__skills-list">
-                                    {this.state.skillArray.map((item, index)=>{
+                                    {this.props.skillArray.map((item, index)=>{
                                         return(
                                             <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills" onClick={this.props.handleSkills}></input>{item}</label></li>
                                         );

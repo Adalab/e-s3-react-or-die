@@ -1,5 +1,6 @@
 import React from 'react';
 import CardIndex from './components/CardIndex';
+import { fetchSkills } from './services/SkillsApi';
 import './App.scss';
 import darth from './images/darth.jpg';
 
@@ -7,6 +8,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            skillArray:[],
             card:
             {
                 palette: 1,
@@ -36,6 +38,10 @@ class App extends React.Component {
         this.handleColor = this.handleColor.bind(this);
         this.handleTypo = this.handleTypo.bind(this);
         this.addSkillorNot = this.addSkillorNot.bind(this);
+        this.getSkills = this.getSkills.bind(this);
+    }
+    componentDidMount() {
+        this.getSkills();
     }
     handleUrl(url) {
         this.setState({
@@ -125,6 +131,15 @@ class App extends React.Component {
         }
     }
 
+    getSkills() {
+        fetchSkills()
+            .then(data => {
+                this.setState({
+                    skillArray: data.skills
+                })
+            })
+    }
+
     addSkillorNot(e) {
         const {card} = this.state;
         const currentSkills = card.skills.slice(0);
@@ -150,7 +165,7 @@ class App extends React.Component {
     render() {
         return (
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot}/>
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray}/>
         );
     }
 }
