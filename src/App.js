@@ -35,6 +35,7 @@ class App extends React.Component {
         this.handleUrl = this.handleUrl.bind(this);
         this.handleColor = this.handleColor.bind(this);
         this.handleTypo = this.handleTypo.bind(this);
+        this.addSkillorNot = this.addSkillorNot.bind(this);
     }
     handleUrl(url) {
         this.setState({
@@ -124,10 +125,32 @@ class App extends React.Component {
         }
     }
 
+    addSkillorNot(e) {
+        const {card} = this.state;
+        const currentSkills = card.skills.slice(0);
+        const check = e.currentTarget;
+        const newSkill = e.currentTarget.value;
+        const isChecked = check.checked;
+
+        if (currentSkills.length < 3 && isChecked) {
+            currentSkills.push(newSkill);
+        } else {
+            check.checked = false;
+            const index = currentSkills.indexOf(newSkill);
+            if (index > -1) {
+                currentSkills.splice(index, 1);
+            }
+        }
+        const newCard = { ...card, skills: currentSkills };
+        this.setState({
+          card: newCard
+        });
+    }
+
     render() {
         return (
             <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo}/>
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot}/>
         );
     }
 }
