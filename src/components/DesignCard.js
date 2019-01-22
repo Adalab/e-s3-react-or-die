@@ -24,7 +24,7 @@ class DesignCard extends Component {
                                 <ul className="themes">
                                     <li>
                                         <label htmlFor="colors" className="theme default">
-                                            <input type="radio" id="cold" name="colors" className="radio" value="1" checked />
+                                            <input onChange={this.props.handleColor} type="radio" id="cold" name="colors" className="radio" value="1" defaultChecked/>
                                             <div className="colors__list" style={{ backgroundColor: "#114e4e" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#438792" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#a2deaf" }}></div>
@@ -32,7 +32,7 @@ class DesignCard extends Component {
                                     </li>
                                     <li>
                                         <label htmlFor="colors" className="theme orange">
-                                            <input type="radio" id="warm" name="colors" className="radio" value="2" />
+                                            <input onChange={this.props.handleColor} type="radio" id="orange-palette" name="colors" className="radio" value="2" />
                                             <div className="colors__list" style={{ backgroundColor: "#420101" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#bd1010" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#e95626" }}></div>
@@ -40,7 +40,7 @@ class DesignCard extends Component {
                                     </li>
                                     <li>
                                         <label htmlFor="colors" className="theme blue">
-                                            <input type="radio" id="formal" name="colors" className="radio" value="3" />
+                                            <input onChange={this.props.handleColor} type="radio" id="blue-palette" name="colors" className="radio" value="3" />
                                             <div className="colors__list" style={{ backgroundColor: "#3e5b65" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#dfe5eb" }}></div>
                                             <div className="colors__list" style={{ backgroundColor: "#a0c0cf" }}></div>
@@ -52,20 +52,20 @@ class DesignCard extends Component {
                                 <h3 className="subtitle__collapsible">Fuentes</h3>
                                 <ul className="fonts___list">
                                     <li>
-                                        <label htmlFor="ubuntu" className="typography ubuntu">
-                                            <input type="radio" id="ubuntu" value="ubuntu" name="fonts" className="radio" value="1" />
+                                        <label htmlFor="fonts" className="typography ubuntu">
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-ubuntu" name="fonts" className="radio" value="1" />
                                             <p className="ubuntu">Ubuntu</p>
                                         </label>
                                     </li>
                                     <li>
-                                        <label htmlFor="comic" className="typography comic">
-                                            <input type="radio" id="comic" value="comic" name="fonts" className="radio" value="2" checked />
+                                        <label htmlFor="fonts" className="typography comic" defaultChecked>
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-comic" name="fonts" className="radio" value="2" />
                                             <p className="comic">Comic Sans</p>
                                         </label>
                                     </li>
                                     <li>
-                                        <label htmlFor="monserrat" className="typography monserrat">
-                                            <input type="radio" id="monserrat" value="monserrat" name="fonts" className="radio" value="3" />
+                                        <label htmlFor="fonts" className="typography monserrat">
+                                            <input onChange={this.props.handleTypo} type="radio" id="font-monserrat" name="fonts" className="radio" value="3" />
                                             <p className="monserrat">Monserrat</p>
                                         </label>
                                     </li>

@@ -110,11 +110,11 @@ class FillCard extends Component {
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
                                     <ul className="container__skills-list">
-                                        {this.state.skillArray.map((item, index) => {
-                                            return (
-                                                <li><label htmlFor={`skills--${index}`} className="input-skills"><input className="maxCheck" id={`skills--${index}`} onClick={this.addSkillorNot} type="checkbox" value={item} name="skills" />{item}</label></li>
-                                            );
-                                        })}
+                                    {this.state.skillArray.map((item, index)=>{
+                                        return(
+                                            <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills" onClick={this.addSkillorNot}></input>{item}</label></li>
+                                        );
+                                    })}
                                     </ul>
                                 </div>
                             </div>
