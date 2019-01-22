@@ -1,11 +1,12 @@
 import React, {
     Component
 } from 'react';
-import './stylesheets/index.scss';
-import logoAdalab from './images/logo-adalab.png';
-import logoCards from './images/logo.svg';
+import { Link } from 'react-router-dom';
+import '../stylesheets/index.scss';
+import logoAdalab from '../images/logo-adalab.png';
+import logoCards from '../images/logo.svg';
 
-class Page extends Component {
+class MainIndex extends Component {
     render() { 
         const pageHeader = (
         <header className="page__header">
@@ -25,7 +26,9 @@ class Page extends Component {
                         <li className="main__item"><i className="icon fas fa-share-alt"></i> Comparte</li>
                     </ul>
                     <a className="link__other" href="">
-                        <div className="btn__comenzar">Comenzar</div>
+                        <div className="btn__comenzar">
+                            <Link to="/CardIndex">Comenzar</Link> 
+                        </div>
                     </a>
                 </div>
             </main>
@@ -43,7 +46,7 @@ class Page extends Component {
         const all = (
             <div className = "page" >
                 <div className = "main" >
-                {pageHeader}; {pageMain}; {pageFooter};
+                {pageHeader} {pageMain} {pageFooter}
                 </div>
             </div>
         );
@@ -51,4 +54,4 @@ class Page extends Component {
     }
 }
 
-export default Page;
+export default MainIndex;
