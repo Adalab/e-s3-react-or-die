@@ -1,36 +1,10 @@
 import React, { Component } from 'react';
-import {fetchSkills} from '../services/SkillsApi';
 import ProfilePic from './ProfilePic';
 
 class FillCard extends Component {
-    constructor(props){
-        super(props);
-
-         this.state = {
-            skillArray : [] 
-               
-        }
-        this.getSkills = this.getSkills.bind(this);
-    }
-
-    componentDidMount() {
-        this.getSkills();
-    }
-    
-    getSkills () {
-        fetchSkills()
-         .then(data=>{
-                       
-            this.setState({
-                skillArray : data.skills
-            })
-            
-        })
-    }
-    render() {
+   render() {
         return (
             <React.Fragment>
-            
 
                 <fieldset>
                     <div className="collapsible">
@@ -46,18 +20,18 @@ class FillCard extends Component {
                         <div className="collapsible__content-fill ">
                             <div className="collapsible__content-form">
                                 <label htmlFor="name" className="form-label form-label--name">Nombre completo</label>
-                                <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input"  onKeyUp={this.props.handleName}/>
+                                <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input" onKeyUp={this.props.handleName} />
                             </div>
                             <div className="collapsible__content-form">
                                 <label htmlFor="puesto" className="form-label form-label--puesto">Puesto</label>
-                                <input type="text" name="puesto" id="puesto" placeholder="Ej: Front-end unicorn" className="form-input" onKeyUp={this.props.handleJob}/>
+                                <input type="text" name="puesto" id="puesto" placeholder="Ej: Front-end unicorn" className="form-input" onKeyUp={this.props.handleJob} />
                             </div>
                             <div className="collapsible__content-form">
                                 <div className="container__btn-img">
                                     <label htmlFor="imagen" className="form-label">Imagen de Perfil</label>
                                     <div className="collapsible__upload-file">
                                         <input type="file" id="img-selector" name="img-selector" className="action_hiddenField" />
-                                        <ProfilePic  cardInfo={this.props.cardInfo} handleUrl = {this.props.handleUrl}/>  
+                                        <ProfilePic cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} />
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +43,7 @@ class FillCard extends Component {
                             <div className="collapsible__content-form">
                                 <label htmlFor="phone" className="form-label">Teléfono</label>
                                 <input type="tel" id="phone" name="phone" placeholder="Ej: 555-55-55-55" className="form-input"
-                                    data-common="tel:" data-ico="fas fa-mobile-alt" data-dest=".list__item--tel" onKeyUp={this.props.handlePhone}/>
+                                    data-common="tel:" data-ico="fas fa-mobile-alt" data-dest=".list__item--tel" onKeyUp={this.props.handlePhone} />
                             </div>
                             <div className="collapsible__content-form">
                                 <label htmlFor="linkedin" className="form-label">Linkedin</label>
@@ -79,17 +53,17 @@ class FillCard extends Component {
                             <div className="collapsible__content-form">
                                 <label htmlFor="github" className="form-label">Github</label>
                                 <input type="" name="github" id="github" placeholder="Ej: @sally-hill" className="form-input"
-                                    data-common="https://github.com/" data-ico="fab fa-github-alt" data-dest=".list__item--github" onKeyUp={this.props.handleGithub}/>
+                                    data-common="https://github.com/" data-ico="fab fa-github-alt" data-dest=".list__item--github" onKeyUp={this.props.handleGithub} />
                             </div>
                             <div className="container__skill--title">
                                 <p className="skills">Habilidades (máximo 3)</p>
                             </div>
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
-                                    <ul className="container__skills-list">  
-                                    {this.state.skillArray.map((item, index)=>{
+                                    <ul className="container__skills-list">
+                                    {this.props.skillArray.map((item, index)=>{
                                         return(
-                                            <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills"></input>{item}</label></li>                                  
+                                            <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills" onClick={this.props.handleSkills}></input>{item}</label></li>
                                         );
                                     })}
                                     </ul>

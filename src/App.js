@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import CardIndex from './components/CardIndex';
+import { fetchSkills } from './services/SkillsApi';
 import MainIndex from './components/MainIndex';
 
 import './App.scss';
@@ -10,6 +11,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            skillArray:[],
             card:
             {
                 palette: 1,
@@ -21,7 +23,7 @@ class App extends React.Component {
                 linkedin: '',
                 github: '',
                 photo: darth,
-                skills: ['HTML', 'Sass', 'JavaScript']
+                skills: []
             },
 
             colors: '',
@@ -38,6 +40,11 @@ class App extends React.Component {
         this.handleUrl = this.handleUrl.bind(this);
         this.handleColor = this.handleColor.bind(this);
         this.handleTypo = this.handleTypo.bind(this);
+        this.addSkillorNot = this.addSkillorNot.bind(this);
+        this.getSkills = this.getSkills.bind(this);
+    }
+    componentDidMount() {
+        this.getSkills();
     }
 
     handleUrl(url) {
@@ -128,19 +135,49 @@ class App extends React.Component {
         }
     }
 
+    getSkills() {
+        fetchSkills()
+            .then(data => {
+                this.setState({
+                    skillArray: data.skills
+                })
+            })
+    }
+
+    addSkillorNot(e) {
+        const {card} = this.state;
+        const currentSkills = card.skills.slice(0);
+        const check = e.currentTarget;
+        const newSkill = e.currentTarget.value;
+        const isChecked = check.checked;
+
+        if (currentSkills.length < 3 && isChecked) {
+            currentSkills.push(newSkill);
+        } else {
+            check.checked = false;
+            const index = currentSkills.indexOf(newSkill);
+            if (index > -1) {
+                currentSkills.splice(index, 1);
+            }
+        }
+        const newCard = { ...card, skills: currentSkills };
+        this.setState({
+          card: newCard
+        });
+    }
+
     render() {
         return (
 
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} />} />
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray}/>} />
 
             </Switch>
 
         );
     }
 }
-
 
 export default App;
