@@ -1,5 +1,8 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import CardIndex from './components/CardIndex';
+import MainIndex from './components/MainIndex';
+
 import './App.scss';
 import darth from './images/darth.jpg';
 
@@ -36,7 +39,7 @@ class App extends React.Component {
         this.handleColor = this.handleColor.bind(this);
         this.handleTypo = this.handleTypo.bind(this);
     }
-    
+
     handleUrl(url) {
         this.setState({
             card: { ...this.state.card, photo: url }
@@ -87,39 +90,39 @@ class App extends React.Component {
         });
     }
 
-    handleColor(e){
-        if (e.currentTarget.value === "1"){
+    handleColor(e) {
+        if (e.currentTarget.value === "1") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value},
+                card: { ...this.state.card, palette: e.currentTarget.value },
                 colors: e.currentTarget.id
             });
-        } else if (e.currentTarget.value === "2"){
+        } else if (e.currentTarget.value === "2") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value},
+                card: { ...this.state.card, palette: e.currentTarget.value },
                 colors: e.currentTarget.id
             });
-        } else if (e.currentTarget.value === "3"){
+        } else if (e.currentTarget.value === "3") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value},
+                card: { ...this.state.card, palette: e.currentTarget.value },
                 colors: e.currentTarget.id
             });
         }
     }
 
-    handleTypo(e){
-        if (e.currentTarget.value === "1"){
+    handleTypo(e) {
+        if (e.currentTarget.value === "1") {
             this.setState({
-                card: { ...this.state.card, typography: e.currentTarget.value},
+                card: { ...this.state.card, typography: e.currentTarget.value },
                 typo: e.currentTarget.id
             });
-        } else if (e.currentTarget.value === "2"){
+        } else if (e.currentTarget.value === "2") {
             this.setState({
-                card: { ...this.state.card, typography: e.currentTarget.value},
+                card: { ...this.state.card, typography: e.currentTarget.value },
                 typo: e.currentTarget.id
             });
-        } else if (e.currentTarget.value === "3"){
+        } else if (e.currentTarget.value === "3") {
             this.setState({
-                card: { ...this.state.card, typography: e.currentTarget.value},
+                card: { ...this.state.card, typography: e.currentTarget.value },
                 typo: e.currentTarget.id
             });
         }
@@ -127,9 +130,24 @@ class App extends React.Component {
 
     render() {
         return (
-            
-            <CardIndex handleName={this.handleName}
-                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo}/>
+
+            <React.Fragment>
+                {/* <CardIndex handleName={this.handleName}
+                handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo}/> */}
+
+                <MainIndex handleName={this.handleName}
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} />
+
+
+                <Switch>
+                    <Route exact path="/" component={MainIndex} />
+                    <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
+                        handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} />} />
+
+                </Switch>
+            </React.Fragment>
+
+
         );
     }
 }
