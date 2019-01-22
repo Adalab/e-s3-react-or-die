@@ -93,7 +93,13 @@ class EditCard extends Component {
                         </ul>
                     </div>
                     <div className="skills">
-                        <ul className="skills__list"></ul>
+                        <ul className="skills__list">
+                        {this.props.cardInfo.skills.map((item, index)=>{
+                            return(
+                                <li className="skill" key={index}>{item}</li>
+                            );
+                        })}
+                        </ul>
                     </div>
                 </div>
             </section>
