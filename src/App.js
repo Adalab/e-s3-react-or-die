@@ -12,7 +12,18 @@ class App extends React.Component {
         super(props);
         this.state = {
             skillArray:[],
-            card: {},
+            card: {
+                palette: 1,
+            typography: 2,
+            name: "Nombre y Apellidos",
+            job: "Front-End Developer",
+            phone: "",
+            email: "",
+            linkedin: "",
+            github: "",
+            photo: darth,
+            skills: []
+            },
             // card: this.getStorage("card"),
             colors: '',
             typo: ''
