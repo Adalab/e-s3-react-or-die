@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
+import {fetchCardCreator} from '../services/createCardApi';
 
 
 class ShareCard extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            urlCard: ''
+        }
+        this.createCard=this.createCard.bind(this);
+    }
+    createCard(){
+        fetchCardCreator(this.props.cardInfo)
+        .then(data =>{
+            this.setState({
+                urlCard: data.cardURL
+            })
+        })
+        .catch(err => alert('Servicio no disponible.\nError: ' + err));
+    }
     render() {
 
         return (
@@ -18,14 +35,12 @@ class ShareCard extends Component {
                             </div>
                         </div>
                         <div className="collapsible__content-share">
-                            <button type="button" className="collapsible__content-button"><i className="far fa-address-card"></i>Crear tarjeta</button>
-                            <div className="getURL"></div>
+                            <button type="button" className="collapsible__content-button" onClick={this.createCard}><i className="far fa-address-card"></i>Crear tarjeta</button>
+                            <div className="getURL">{this.state.urlCard}</div>
                         </div>
                     </div>
                 </fieldset>
-
             </React.Fragment>
-
         );
     }
 }
