@@ -12,20 +12,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             skillArray:[],
-            card:
-            {
-                palette: 1,
-                typography: 2,
-                name: 'Nombre completo',
-                job: 'Front-End developer',
-                phone: '',
-                email: '',
-                linkedin: '',
-                github: '',
-                photo: darth,
-                skills: []
-            },
-
+            card: {},
+            // card: this.getStorage("card"),
             colors: '',
             typo: ''
 
@@ -42,76 +30,138 @@ class App extends React.Component {
         this.handleTypo = this.handleTypo.bind(this);
         this.addSkillorNot = this.addSkillorNot.bind(this);
         this.getSkills = this.getSkills.bind(this);
+        this.getLastWord = this.getLastWord.bind(this);
+
+
     }
     componentDidMount() {
         this.getSkills();
+        this.setState({
+            card: this.getLastWord()
+        });
     }
+    saveLastWord(value) {
+        localStorage.setItem('data', JSON.stringify(value))
+    }
+
+    getLastWord() {
+        const lastWord = (localStorage.getItem('data') !== null) ? JSON.parse(localStorage.getItem('data')) : { 
+            palette: 1,
+            typography: 2,
+            name: "Nombre y Apellidos",
+            job: "Front-End Developer",
+            phone: "",
+            email: "",
+            linkedin: "",
+            github: "",
+            photo: darth,
+            skills: []
+
+        }
+        return lastWord;
+    }
+
 
     handleUrl(url) {
+        const {card} = this.state;
+        const newCard = {...card, photo: url };
+
         this.setState({
-            card: { ...this.state.card, photo: url }
+            card: newCard
         });
-    }
+        this.saveLastWord(newCard);
+    };
 
     handleName(event) {
+        const {card} = this.state;
+        const newCard = {...card, name: event.currentTarget.value };
+
         this.setState({
-            card: { ...this.state.card, name: event.currentTarget.value }
+            card: newCard
         });
+        this.saveLastWord(newCard);
     }
 
 
     handleJob(event) {
+        const {card} = this.state;
+        const newCard = {...card, job: event.currentTarget.value };
+
         this.setState({
-            card: { ...this.state.card, job: event.currentTarget.value }
+            card: newCard
         });
+        this.saveLastWord(newCard);
     }
 
     handlePhone(event) {
+        const {card} = this.state;
+        const newCard = {...card, phone: event.currentTarget.value };
+
         this.setState({
-            card: { ...this.state.card, phone: event.currentTarget.value }
+            card: newCard
         });
+        this.saveLastWord(newCard);
     }
 
     handleEmail(event) {
+        const {card} = this.state;
+        const newCard = {...card, email: event.currentTarget.value };
+
         this.setState({
-            card: { ...this.state.card, email: event.currentTarget.value }
+            card: newCard
         });
+        this.saveLastWord(newCard);
     }
 
     handleLinkedin(event) {
+        const {card} = this.state;
+        const newCard = {...card, linkedin: event.currentTarget.value };
+
         this.setState({
-            card: { ...this.state.card, linkedin: event.currentTarget.value }
+            card: newCard
         });
+        this.saveLastWord(newCard);
     }
 
     handleGithub(event) {
-        this.setState({
-            card: { ...this.state.card, github: event.currentTarget.value }
-        });
+        const {card} = this.state;
+        const newCard = {...card, github: event.currentTarget.value };
 
+        this.setState({
+            card: newCard
+        });
+        this.saveLastWord(newCard);
     }
 
     handlePhoto(event) {
+        const {card} = this.state;
+        const newCard = {...card, photo: event.currentTarget.value };
+
         this.setState({
-            card: { ...this.state.card, photo: event.currentTarget.value }
+            card: newCard
         });
+        this.saveLastWord(newCard);
     }
 
-    handleColor(e) {
-        if (e.currentTarget.value === "1") {
+    handleColor(event) {
+        const {card} = this.state;
+        const newCard = {...card, palette: event.currentTarget.value };
+
+        this.saveLastWord(newCard);
+        if (event.currentTarget.value === "1") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value },
-                colors: e.currentTarget.id
+                card: newCard,
+                colors: event.currentTarget.id
             });
-        } else if (e.currentTarget.value === "2") {
+        } else if (event.currentTarget.value === "2") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value },
-                colors: e.currentTarget.id
+                card: newCard,
+                colors: event.currentTarget.id
             });
-        } else if (e.currentTarget.value === "3") {
+        } else if (event.currentTarget.value === "3") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value },
-                colors: e.currentTarget.id
+                card: newCard,
+                colors: event.currentTarget.id
             });
         }
     }
