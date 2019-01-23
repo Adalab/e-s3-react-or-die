@@ -25,11 +25,10 @@ class MainIndex extends Component {
                         <li className="main__item"><i className="icon far fa-keyboard"></i>  Rellena</li>
                         <li className="main__item"><i className="icon fas fa-share-alt"></i> Comparte</li>
                     </ul>
-                    <a className="link__other" href="">
+                
                         <div className="btn__comenzar">
                             <Link to="/CardIndex">Comenzar</Link> 
                         </div>
-                    </a>
                 </div>
             </main>
         );
