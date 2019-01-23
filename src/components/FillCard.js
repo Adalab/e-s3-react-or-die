@@ -1,57 +1,8 @@
 import React, { Component } from 'react';
-import { fetchSkills } from '../services/SkillsApi';
 import ProfilePic from './ProfilePic';
 
-const currentSkills = [];
 class FillCard extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            skillArray: [],
-            card:{
-                chosenSkills:[]
-            }
-        };
-        this.getSkills = this.getSkills.bind(this);
-        this.addSkillorNot = this.addSkillorNot.bind(this);
-    }
-
-    componentDidMount() {
-        this.getSkills();
-    }
-
-    getSkills() {
-        fetchSkills()
-            .then(data => {
-                this.setState({
-                    skillArray: data.skills
-                })
-            })
-    }
-    addSkillorNot(e) {
-        const {card} = this.state;
-        const currentSkills = paco.chosenSkills.slice(0);
-        const check = e.currentTarget;
-        const newSkill = e.currentTarget.value;
-        const isChecked = check.checked;
-
-        if (currentSkills.length < 3 && isChecked) {
-            currentSkills.push(newSkill);
-        } else {
-            check.checked = false;
-            const index = currentSkills.indexOf(newSkill);
-            if (index > -1) {
-                currentSkills.splice(index, 1);
-            }
-        }
-        const newCard = { ...paco, chosenSkills: currentSkills };
-        this.setState({
-          card: newCard
-        });
-    }
-
-    render() {
+   render() {
         return (
             <React.Fragment>
 
@@ -110,9 +61,9 @@ class FillCard extends Component {
                             <div className="container__skills">
                                 <div className="collapsible__content-form">
                                     <ul className="container__skills-list">
-                                    {this.state.skillArray.map((item, index)=>{
+                                    {this.props.skillArray.map((item, index)=>{
                                         return(
-                                            <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills" onClick={this.addSkillorNot}></input>{item}</label></li>
+                                            <li key={index}><label htmlFor={item} className="input-skills"><input className="maxCheck" type="checkbox" id={index} value={item} name="skills" onClick={this.props.handleSkills}></input>{item}</label></li>
                                         );
                                     })}
                                     </ul>

@@ -1,0 +1,14 @@
+@import 'core/settings';
+@import 'core/typography';
+@import 'components/form-edit';
+@import 'components/header-edit';
+@import 'components/card-edit';
+@import 'components/card-queries';
+@import 'layout/header';
+@import 'layout/main-main';
+@import 'layout/footer';
+
+body {
+	height: 100vh;
+	margin: 0;
+}
