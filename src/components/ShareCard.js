@@ -36,7 +36,7 @@ class ShareCard extends Component {
                         </div>
                         <div className="collapsible__content-share">
                             <button type="button" className="collapsible__content-button" onClick={this.createCard}><i className="far fa-address-card"></i>Crear tarjeta</button>
-                            <div className="getURL">{this.state.urlCard}</div>
+                            <div className="getURL"><a href={this.state.urlCard}>{this.state.urlCard}</a></div>
                         </div>
                     </div>
                 </fieldset>
