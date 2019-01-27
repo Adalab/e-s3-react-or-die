@@ -11,23 +11,24 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            skillArray:[],
+            skillArray: [],
             card: {
                 palette: 1,
-            typography: 2,
-            name: "Nombre y Apellidos",
-            job: "Front-End Developer",
-            phone: "",
-            email: "",
-            linkedin: "",
-            github: "",
-            photo: darth,
-            skills: []
+                typography: 2,
+                name: "Nombre y Apellidos",
+                job: "Front-End Developer",
+                phone: "",
+                email: "",
+                linkedin: "",
+                github: "",
+                photo: darth,
+                skills: []
             },
-            // card: this.getStorage("card"),
-            colors: '',
-            typo: ''
-
+            
+            styles: {
+                colors: '',
+                typo: ''
+            },
         }
 
         this.handleName = this.handleName.bind(this);
@@ -42,21 +43,35 @@ class App extends React.Component {
         this.addSkillorNot = this.addSkillorNot.bind(this);
         this.getSkills = this.getSkills.bind(this);
         this.getLastWord = this.getLastWord.bind(this);
+        this.getLastStyles = this.getLastStyles.bind(this);
     }
 
     componentDidMount() {
         this.getSkills();
         this.setState({
-            card: this.getLastWord()
+            card: this.getLastWord(),
+            styles: this.getLastStyles()
         });
     }
-    
+
     saveLastWord(value) {
         localStorage.setItem('data', JSON.stringify(value))
     }
 
+    saveLastStyles(item) {
+        localStorage.setItem('styles', JSON.stringify(item))
+    }
+
+    getLastStyles() {
+        const lastStyles = (localStorage.getItem('sytles') !== null) ? JSON.parse(localStorage.getItem('styles')) : {
+            colors: '',
+            typo: ''
+        }
+        return lastStyles;
+    }
+
     getLastWord() {
-        const lastWord = (localStorage.getItem('data') !== null) ? JSON.parse(localStorage.getItem('data')) : { 
+        const lastWord = (localStorage.getItem('data') !== null) ? JSON.parse(localStorage.getItem('data')) : {
             palette: 1,
             typography: 2,
             name: "Nombre y Apellidos",
@@ -74,8 +89,8 @@ class App extends React.Component {
 
 
     handleUrl(url) {
-        const {card} = this.state;
-        const newCard = {...card, photo: url };
+        const { card } = this.state;
+        const newCard = { ...card, photo: url };
 
         this.setState({
             card: newCard
@@ -84,8 +99,8 @@ class App extends React.Component {
     };
 
     handleName(event) {
-        const {card} = this.state;
-        const newCard = {...card, name: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, name: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -95,8 +110,8 @@ class App extends React.Component {
 
 
     handleJob(event) {
-        const {card} = this.state;
-        const newCard = {...card, job: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, job: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -105,8 +120,8 @@ class App extends React.Component {
     }
 
     handlePhone(event) {
-        const {card} = this.state;
-        const newCard = {...card, phone: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, phone: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -115,8 +130,8 @@ class App extends React.Component {
     }
 
     handleEmail(event) {
-        const {card} = this.state;
-        const newCard = {...card, email: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, email: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -125,8 +140,8 @@ class App extends React.Component {
     }
 
     handleLinkedin(event) {
-        const {card} = this.state;
-        const newCard = {...card, linkedin: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, linkedin: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -135,8 +150,8 @@ class App extends React.Component {
     }
 
     handleGithub(event) {
-        const {card} = this.state;
-        const newCard = {...card, github: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, github: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -145,8 +160,8 @@ class App extends React.Component {
     }
 
     handlePhoto(event) {
-        const {card} = this.state;
-        const newCard = {...card, photo: event.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, photo: event.currentTarget.value };
 
         this.setState({
             card: newCard
@@ -155,48 +170,55 @@ class App extends React.Component {
     }
 
     handleColor(event) {
-        const {card} = this.state;
-        const newCard = {...card, palette: event.currentTarget.value };
-        this.saveLastWord(newCard);
+        const { card } = this.state;
+        const newCard = { ...card, palette: event.currentTarget.value};
+        const {styles} = this.state;
+        const newColor = {...styles, colors: event.currentTarget.id};
+
         if (event.currentTarget.value === "1") {
             this.setState({
                 card: newCard,
-                colors: event.currentTarget.id
+                styles: newColor
             });
         } else if (event.currentTarget.value === "2") {
             this.setState({
                 card: newCard,
-                colors: event.currentTarget.id
+                styles: newColor
             });
         } else if (event.currentTarget.value === "3") {
             this.setState({
                 card: newCard,
-                colors: event.currentTarget.id
+                styles: newColor
             });
         }
+        this.saveLastWord(newCard);
+        this.saveLastStyles(newColor)
     }
 
     handleTypo(e) {
-        const {card} = this.state;
-        const newCard = {...card, typography: e.currentTarget.value };
+        const { card } = this.state;
+        const newCard = { ...card, typography: e.currentTarget.value };
+        const {styles} = this.state;
+        const newTypo = {...styles, typo: e.currentTarget.id};
 
         if (e.currentTarget.value === "1") {
             this.setState({
                 card: newCard,
-                typo: e.currentTarget.id
+                styles: newTypo
             });
         } else if (e.currentTarget.value === "2") {
             this.setState({
                 card: newCard,
-                typo: e.currentTarget.id
+                styles: newTypo
             });
         } else if (e.currentTarget.value === "3") {
             this.setState({
                 card: newCard,
-                typo: e.currentTarget.id
+                styles: newTypo
             });
         }
         this.saveLastWord(newCard);
+        this.saveLastStyles(newTypo);
     }
 
     getSkills() {
@@ -209,7 +231,7 @@ class App extends React.Component {
     }
 
     addSkillorNot(e) {
-        const {card} = this.state;
+        const { card } = this.state;
         const currentSkills = card.skills.slice(0);
         const check = e.currentTarget;
         const newSkill = e.currentTarget.value;
@@ -226,26 +248,9 @@ class App extends React.Component {
         }
         const newCard = { ...card, skills: currentSkills };
         this.setState({
-          card: newCard
+            card: newCard
         });
-        this.saveLastWord(newCard);        
-    }
-
-    localStore(key, value) {
-        localStorage.setItem(key, value);
-        }
- 
-    getStorage(key) {
-        if (localStorage.getItem(key) !== null){
-            return JSON.parse(localStorage.getItem(key));
-        }else{
-            return this.state.card;
-        }
-    }
- 
-    createStorage(){
-        localStorage.setItem('card', JSON.stringify(this.state.card));
- 
+        this.saveLastWord(newCard);
     }
 
     render() {
@@ -254,7 +259,7 @@ class App extends React.Component {
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray}/>} />
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} />} />
 
             </Switch>
 
