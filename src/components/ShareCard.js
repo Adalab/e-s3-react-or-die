@@ -6,7 +6,9 @@ class ShareCard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            urlCard: ''
+            urlCard: '',
+            urlTwitter: '',
+            twitter: 'hidden__icon'
         }
         this.createCard=this.createCard.bind(this);
     }
@@ -14,7 +16,9 @@ class ShareCard extends Component {
         fetchCardCreator(this.props.cardInfo)
         .then(data =>{
             this.setState({
-                urlCard: data.cardURL
+                urlCard: data.cardURL,
+                urlTwitter: `https://twitter.com/share?url=${data.urlCard}&text=Lo peto con mi tarjeta personal! by Sticker Fighters&hashtags=JavaScript, Adalab`,
+                twitter:'' 
             })
         })
         .catch(err => alert('Servicio no disponible.\nError: ' + err));
@@ -37,6 +41,11 @@ class ShareCard extends Component {
                         <div className="collapsible__content-share">
                             <button type="button" className="collapsible__content-button" onClick={this.createCard}><i className="far fa-address-card"></i>Crear tarjeta</button>
                             <div className="getURL"><a href={this.state.urlCard}>{this.state.urlCard}</a></div>
+                            <div className={`content-share__twitter ${this.state.twitter}`} target="_blank"><a className="link__twitter" href={this.state.urlTwitter}><button className="share-twitter" type="button">
+                            <i className="fab fa-twitter"></i>
+                            <span className="text-twitter">Compartir en Twitter</span>
+                        </button></a></div>
+
                         </div>
                     </div>
                 </fieldset>
