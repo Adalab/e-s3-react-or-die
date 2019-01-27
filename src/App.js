@@ -215,6 +215,8 @@ class App extends React.Component {
         this.setState({
             card : defaultCard
         });
+
+        document.querySelector(".card-form").reset();
     
     };      
       
