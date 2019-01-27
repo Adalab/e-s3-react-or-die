@@ -4,6 +4,7 @@ import CardIndex from './components/CardIndex';
 import { fetchSkills } from './services/SkillsApi';
 import MainIndex from './components/MainIndex';
 
+
 import './App.scss';
 import darth from './images/darth.jpg';
 
@@ -43,6 +44,7 @@ class App extends React.Component {
         this.addSkillorNot = this.addSkillorNot.bind(this);
         this.getSkills = this.getSkills.bind(this);
         this.getStorage = this.getStorage.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     
     }
     componentDidMount() {
@@ -197,13 +199,34 @@ class App extends React.Component {
  
     }
 
+    handleReset(){
+         const defaultCard = {
+          name: 'Nombre Apellido',
+          job: 'Front-end developer',
+          photo: darth,
+          email: '',
+          phone: '',
+          linkedin: '',
+          github: '',
+          palette: '1',
+          typography: '2',
+          skills: []
+        }
+        this.setState({
+            card : defaultCard
+        });
+    
+    };      
+      
+    
+
     render() {
         return (
 
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray}/>} />
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} colors={this.state.colors} handleTypo={this.handleTypo} typo={this.state.typo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset}/>} />
 
             </Switch>
 
