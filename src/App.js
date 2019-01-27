@@ -87,7 +87,6 @@ class App extends React.Component {
         return lastWord;
     }
 
-
     handleUrl(url) {
         const { card } = this.state;
         const newCard = { ...card, photo: url };
@@ -107,7 +106,6 @@ class App extends React.Component {
         });
         this.saveLastWord(newCard);
     }
-
 
     handleJob(event) {
         const { card } = this.state;
