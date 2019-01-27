@@ -42,77 +42,91 @@ class App extends React.Component {
         this.handleTypo = this.handleTypo.bind(this);
         this.addSkillorNot = this.addSkillorNot.bind(this);
         this.getSkills = this.getSkills.bind(this);
+        this.getStorage = this.getStorage.bind(this);
+    
     }
     componentDidMount() {
         this.getSkills();
+        this.getStorage();
     }
 
     handleUrl(url) {
         this.setState({
-            card: { ...this.state.card, photo: url }
+            card: { ...this.state.card, photo: url}
         });
+        this.createStorage(url);
     }
 
     handleName(event) {
+        const localName = event.currentTarget.value;
         this.setState({
-            card: { ...this.state.card, name: event.currentTarget.value }
+            card: { ...this.state.card, name: localName}
         });
+        this.createStorage(localName);
     }
 
 
     handleJob(event) {
+        const localJob = event.currentTarget.value;
         this.setState({
-            card: { ...this.state.card, job: event.currentTarget.value }
+            card: { ...this.state.card, job: localJob }
         });
+        this.createStorage(localJob);
     }
 
     handlePhone(event) {
+        const localPhone = event.currentTarget.value;
         this.setState({
             card: { ...this.state.card, phone: event.currentTarget.value }
         });
+        this.createStorage(localPhone);
     }
 
     handleEmail(event) {
+        const localEmail = event.currentTarget.value;
         this.setState({
             card: { ...this.state.card, email: event.currentTarget.value }
         });
+        this.createStorage(localEmail);
     }
 
     handleLinkedin(event) {
+        const localLinkedin = event.currentTarget.value;
         this.setState({
             card: { ...this.state.card, linkedin: event.currentTarget.value }
         });
+        this.createStorage(localLinkedin);
     }
 
     handleGithub(event) {
+        const localGithub = event.currentTarget.value;
         this.setState({
             card: { ...this.state.card, github: event.currentTarget.value }
         });
+        this.createStorage(localGithub);
 
-    }
-
-    handlePhoto(event) {
-        this.setState({
-            card: { ...this.state.card, photo: event.currentTarget.value }
-        });
     }
 
     handleColor(e) {
+        const localColor = e.currentTarget.value;
         if (e.currentTarget.value === "1") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value },
+                card: { ...this.state.card, palette: e.currentTarget.id },
                 colors: e.currentTarget.id
             });
+            this.createStorage(localColor);
         } else if (e.currentTarget.value === "2") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value },
+                card: { ...this.state.card, palette: e.currentTarget.id },
                 colors: e.currentTarget.id
             });
+            this.createStorage(localColor);
         } else if (e.currentTarget.value === "3") {
             this.setState({
-                card: { ...this.state.card, palette: e.currentTarget.value },
+                card: { ...this.state.card, palette: e.currentTarget.id },
                 colors: e.currentTarget.id
             });
+            this.createStorage(localColor);
         }
     }
 
@@ -164,6 +178,23 @@ class App extends React.Component {
         this.setState({
           card: newCard
         });
+    }
+
+    localStore(key, value) {
+        localStorage.setItem(key, value);
+        }
+ 
+    getStorage(key) {
+        if (localStorage.getItem(key) !== null){
+            return JSON.parse(localStorage.getItem(key));
+        }else{
+            return this.state.card;
+        }
+    }
+ 
+    createStorage(){
+        localStorage.setItem('card', JSON.stringify(this.state.card));
+ 
     }
 
     render() {
