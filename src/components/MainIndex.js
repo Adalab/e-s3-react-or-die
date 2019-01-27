@@ -25,6 +25,7 @@ class MainIndex extends Component {
                         <li className="main__item"><i className="icon far fa-keyboard"></i>  Rellena</li>
                         <li className="main__item"><i className="icon fas fa-share-alt"></i> Comparte</li>
                     </ul>
+                
                         <div className="btn__comenzar">
                             <Link className="link-router" to="/CardIndex">Comenzar</Link> 
                         </div>

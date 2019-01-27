@@ -7,7 +7,9 @@ class Header extends Component {
         const editHeader = (
             <header>
                 <Link to="/">
-                        <img src={logoCards} alt="hero" className="img-hero" />
+
+                    <img src={logoCards} alt="hero" className="img-hero" />
+
                 </Link>
             </header>
         );

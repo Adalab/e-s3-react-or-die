@@ -5,8 +5,6 @@ class DesignCard extends Component {
 
         return (
             <React.Fragment>
-
-
                 <fieldset className="section-form__subsection">
                     <div className="collapsible">
                         <div className="collapsible__clickable collapsible__design">
@@ -74,7 +72,6 @@ class DesignCard extends Component {
                         </div>
                     </div>
                 </fieldset>
-
             </React.Fragment>
         );
     }

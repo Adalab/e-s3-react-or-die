@@ -253,7 +253,6 @@ class App extends React.Component {
 
     render() {
         return (
-
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
