@@ -17,7 +17,7 @@ class ShareCard extends Component {
         .then(data =>{
             this.setState({
                 urlCard: data.cardURL,
-                urlTwitter: `https://twitter.com/share?url=${data.urlCard}&text=Lo peto con mi tarjeta personal! by Sticker Fighters&hashtags=JavaScript, Adalab`,
+                urlTwitter: `https://twitter.com/share?url=${data.urlCard}&text=Esta es mi tarjeta personal. Contrátame :) ! by React or Die s&hashtags=JavaScript, Adalab`,
                 twitter:'' 
             })
         })
