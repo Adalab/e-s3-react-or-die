@@ -42,15 +42,15 @@ class App extends React.Component {
         this.addSkillorNot = this.addSkillorNot.bind(this);
         this.getSkills = this.getSkills.bind(this);
         this.getLastWord = this.getLastWord.bind(this);
-
-
     }
+
     componentDidMount() {
         this.getSkills();
         this.setState({
             card: this.getLastWord()
         });
     }
+    
     saveLastWord(value) {
         localStorage.setItem('data', JSON.stringify(value))
     }
@@ -157,7 +157,6 @@ class App extends React.Component {
     handleColor(event) {
         const {card} = this.state;
         const newCard = {...card, palette: event.currentTarget.value };
-
         this.saveLastWord(newCard);
         if (event.currentTarget.value === "1") {
             this.setState({
@@ -178,22 +177,26 @@ class App extends React.Component {
     }
 
     handleTypo(e) {
+        const {card} = this.state;
+        const newCard = {...card, typography: e.currentTarget.value };
+
         if (e.currentTarget.value === "1") {
             this.setState({
-                card: { ...this.state.card, typography: e.currentTarget.value },
+                card: newCard,
                 typo: e.currentTarget.id
             });
         } else if (e.currentTarget.value === "2") {
             this.setState({
-                card: { ...this.state.card, typography: e.currentTarget.value },
+                card: newCard,
                 typo: e.currentTarget.id
             });
         } else if (e.currentTarget.value === "3") {
             this.setState({
-                card: { ...this.state.card, typography: e.currentTarget.value },
+                card: newCard,
                 typo: e.currentTarget.id
             });
         }
+        this.saveLastWord(newCard);
     }
 
     getSkills() {
@@ -225,6 +228,24 @@ class App extends React.Component {
         this.setState({
           card: newCard
         });
+        this.saveLastWord(newCard);        
+    }
+
+    localStore(key, value) {
+        localStorage.setItem(key, value);
+        }
+ 
+    getStorage(key) {
+        if (localStorage.getItem(key) !== null){
+            return JSON.parse(localStorage.getItem(key));
+        }else{
+            return this.state.card;
+        }
+    }
+ 
+    createStorage(){
+        localStorage.setItem('card', JSON.stringify(this.state.card));
+ 
     }
 
     render() {
