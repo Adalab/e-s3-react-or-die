@@ -9,7 +9,7 @@ class CardIndex extends Component {
         return (
             <React.Fragment>
                 <Header/>
-                <Main handleName = {this.props.handleName} handleJob = {this.props.handleJob} handlePhone = {this.props.handlePhone} handleEmail = {this.props.handleEmail} handleLinkedin = {this.props.handleLinkedin} handleGithub = {this.props.handleGithub} handlePhoto = {this.props.handlePhoto} cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} handleColor={this.props.handleColor} colors={this.props.colors} handleTypo={this.props.handleTypo} typo={this.props.typo} handleSkills={this.props.handleSkills} skillArray={this.props.skillArray}/>
+                <Main handleName = {this.props.handleName} handleJob = {this.props.handleJob} handlePhone = {this.props.handlePhone} handleEmail = {this.props.handleEmail} handleLinkedin = {this.props.handleLinkedin} handleGithub = {this.props.handleGithub} handlePhoto = {this.props.handlePhoto} cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} handleColor={this.props.handleColor} styles={this.props.styles} handleTypo={this.props.handleTypo} handleSkills={this.props.handleSkills} skillArray={this.props.skillArray}/>
                 <Footer/>
             </React.Fragment>
         );

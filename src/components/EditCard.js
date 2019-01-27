@@ -25,7 +25,7 @@ class EditCard extends Component {
         if (this.props.cardInfo.email !== '') {
             return (
                 <div>
-                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="far fa-envelope"></i></li>
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i className="far fa-envelope"></i></li>
                 </div>
             )
         }
@@ -42,7 +42,7 @@ class EditCard extends Component {
         if (this.props.cardInfo.github !== '') {
             return (
                 <div>
-                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="fab fa-github-alt"></i></li>
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i className="fab fa-github-alt"></i></li>
                 </div>
             )
         }
@@ -59,7 +59,7 @@ class EditCard extends Component {
         if (this.props.cardInfo.linkedin !== '') {
             return (
                 <div>
-                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i class="fab fa-linkedin-in"></i></li>
+                    <li className=" contact-list__tlf list__item--tel social-media__icon"><i className="fab fa-linkedin-in"></i></li>
                 </div>
             )
         }
@@ -75,7 +75,7 @@ class EditCard extends Component {
         const editCard = (
             <section className="section__card">
                 <ResetBtn/>
-                <div className={`section__card-content ${this.props.colors} ${this.props.typo}`}>
+                <div className={`section__card-content ${this.props.styles.colors} ${this.props.styles.typo}`}>
                     <div className="description">
                         <div className="rectangle"></div>
                         <h1 className="h1-description">{this.props.cardInfo.name}</h1>
