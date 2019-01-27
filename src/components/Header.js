@@ -6,11 +6,10 @@ class Header extends Component {
     render() {
         const editHeader = (
             <header>
-
                 <Link to="/">
-                    <a href="index-edit.html">
-                        <img src={logoCards} alt="hero" className="img-hero" />
-                    </a>
+
+                    <img src={logoCards} alt="hero" className="img-hero" />
+
                 </Link>
             </header>
         );

@@ -8,6 +8,11 @@ body {
   flex-direction: column;
 }
 
+.link-router{
+  text-decoration: none;
+  color: $color-white-three;
+}
+
 .main {
   padding: 0 28px;
   min-height: 458px;
