@@ -74,7 +74,7 @@ class EditCard extends Component {
     render() {
         const editCard = (
             <section className="section__card">
-                <ResetBtn/>
+                <ResetBtn handleReset={this.props.handleReset}/>
                 <div className={`section__card-content ${this.props.styles.colors} ${this.props.styles.typo}`}>
                     <div className="description">
                         <div className="rectangle"></div>

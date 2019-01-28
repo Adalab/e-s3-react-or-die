@@ -4,6 +4,7 @@ import CardIndex from './components/CardIndex';
 import { fetchSkills } from './services/SkillsApi';
 import MainIndex from './components/MainIndex';
 
+
 import './App.scss';
 import darth from './images/darth.jpg';
 
@@ -24,7 +25,6 @@ class App extends React.Component {
                 photo: darth,
                 skills: []
             },
-            
             styles: {
                 colors: '',
                 typo: ''
@@ -44,6 +44,7 @@ class App extends React.Component {
         this.getSkills = this.getSkills.bind(this);
         this.getLastWord = this.getLastWord.bind(this);
         this.getLastStyles = this.getLastStyles.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
 
     componentDidMount() {
@@ -251,13 +252,32 @@ class App extends React.Component {
         this.saveLastWord(newCard);
     }
 
+    handleReset() {
+      const defaultCard = {
+        name: 'Nombre Apellido',
+        job: 'Front-end developer',
+        photo: darth,
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+        palette: '1',
+        typography: '2',
+        skills: []
+      }
+      this.setState({
+        card: defaultCard
+      });
+      document.querySelector(".card-form").reset();
+      document.querySelector(".uploadFile").style='';
+    };
+
     render() {
         return (
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} />} />
-
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset}/>} />
             </Switch>
 
         );
