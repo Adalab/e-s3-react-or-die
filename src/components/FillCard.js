@@ -8,7 +8,7 @@ class FillCard extends Component {
 
                 <fieldset>
                     <div className="collapsible">
-                        <div className={`collapsible__clickable collapsible__fill ${this.props.collapsibleFill}`} >
+                        <div className="collapsible__clickable collapsible__fill" onClick={this.props.handleCollapsibles}>
                             <div className="collapsible__clickable-title">
                                 <i className="far fa-keyboard title-icon"></i>
                                 <h2 className="title__collapsible">Rellena</h2>
@@ -17,7 +17,7 @@ class FillCard extends Component {
                                 <i className="fas fa-angle-down icon-down"></i>
                             </div>
                         </div>
-                        <div className="collapsible__content-fill ">
+                        <div className={`collapsible__content-fill ${this.props.collapsibleFill}`}>
                             <div className="collapsible__content-form">
                                 <label htmlFor="name" className="form-label form-label--name">Nombre completo</label>
                                 <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input" onKeyUp={this.props.handleName} />

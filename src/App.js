@@ -282,27 +282,44 @@ class App extends React.Component {
 
 
     handleCollapsibles(){
-
-        console.log('hola')
         if (this.state.collapsibleDesign.includes('hidden__icon')) {
         this.setState({
             collapsibleDesign: '',
             collapsibleFill : 'hidden__icon',
             collapsibleShare : 'hidden__icon'
         })
-
-        console.log(this.state.collapsibleDesign)
-    } else { 
+       
+        } else { 
         this.setState({
              collapsibleDesign: 'hidden__icon',
         })
+
+        if (this.state.collapsibleFill.includes('hidden__icon')) {
+            this.setState({
+                collapsibleFill: '',
+                collapsibleDesign : 'hidden__icon',
+                collapsibleShare : 'hidden__icon'
+            })
     
-        // } else if (clickableSection.classList.contains('collapsible__fill') === true) {
-        //   fillContent.classList.toggle('hidden');
-        // } else {
-        //   shareContent.classList.toggle('hidden');
-        // }
+        } else { 
+            this.setState({
+                 collapsibleFill: 'hidden__icon',
+            })
     }}
+    if (this.state.collapsibleShare.includes('hidden__icon')) {
+        this.setState({
+            collapsibleShare : '',
+            collapsibleDesign : 'hidden__icon',
+            collapsibleFill : 'hidden__icon'
+        })
+
+    } else { 
+        this.setState({
+             collapsibleShare: 'hidden__icon',
+        })
+    
+    }
+}
     
 
     render() {
