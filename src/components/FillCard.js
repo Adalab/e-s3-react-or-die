@@ -8,7 +8,7 @@ class FillCard extends Component {
 
                 <fieldset>
                     <div className="collapsible">
-                        <div className="collapsible__clickable collapsible__fill">
+                        <div className="collapsible__clickable collapsible__fill" onClick={this.props.handleCollapsiblesFill}>
                             <div className="collapsible__clickable-title">
                                 <i className="far fa-keyboard title-icon"></i>
                                 <h2 className="title__collapsible">Rellena</h2>
@@ -17,7 +17,7 @@ class FillCard extends Component {
                                 <i className="fas fa-angle-down icon-down"></i>
                             </div>
                         </div>
-                        <div className="collapsible__content-fill ">
+                        <div className={`collapsible__content-fill ${this.props.collapsibleFill}`}>
                             <div className="collapsible__content-form">
                                 <label htmlFor="name" className="form-label form-label--name">Nombre completo</label>
                                 <input type="text" name="name" id="name" placeholder="Ej: Sally Jill" className="form-input" onKeyUp={this.props.handleName} />
@@ -31,7 +31,7 @@ class FillCard extends Component {
                                     <label htmlFor="imagen" className="form-label">Imagen de Perfil</label>
                                     <div className="collapsible__upload-file">
                                         <input type="file" id="img-selector" name="img-selector" className="action_hiddenField" />
-                                        <ProfilePic cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} />
+                                        <ProfilePic cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} previewRef={this.props.previewRef}/>
                                     </div>
                                 </div>
                             </div>

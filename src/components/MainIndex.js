@@ -1,5 +1,5 @@
 import React, {
-    Component
+  Component
 } from 'react';
 import { Link } from 'react-router-dom';
 import '../stylesheets/index.scss';
@@ -7,14 +7,14 @@ import logoAdalab from '../images/logo-adalab.png';
 import logoCards from '../images/logo.svg';
 
 class MainIndex extends Component {
-    render() { 
-        const pageHeader = (
-        <header className="page__header">
-            <div className="image__logo">
-                <img src= {logoCards} alt="logo cards" className="logo" />
-            </div>
-        </header>
-        );
+  render() {
+    const pageHeader = (
+      <header className="page__header">
+        <div className="image__logo">
+          <img src={logoCards} alt="logo cards" className="logo" />
+        </div>
+      </header>
+    );
         const pageMain = (
             <main className="page__main">
                 <div className="main__container">
@@ -25,7 +25,6 @@ class MainIndex extends Component {
                         <li className="main__item"><i className="icon far fa-keyboard"></i>  Rellena</li>
                         <li className="main__item"><i className="icon fas fa-share-alt"></i> Comparte</li>
                     </ul>
-                
                         <div className="btn__comenzar">
                             <Link className="link-router" to="/CardIndex">Comenzar</Link> 
                         </div>
@@ -38,10 +37,10 @@ class MainIndex extends Component {
                      <p className = "footer__copy"> Awesome profile - cards @2019 </p> 
                     <a href = "https://adalab.es/" target = "_blank " rel="noopener noreferrer"> 
                     <img src = {logoAdalab} alt = "logo-adalab" className = "footer__logo" /> 
-                    </a> 
-                </div> 
+                    </a>
+                </div>
             </footer>
-        ); 
+        );
         const all = (
             <div className = "page" >
                 <div className = "main" >

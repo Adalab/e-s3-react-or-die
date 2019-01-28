@@ -8,6 +8,7 @@ class ProfilePic extends Component {
         super(props);
     
         this.fileInput = React.createRef();
+
         this.previewImage = '';
 
         this.fakeClick = this.fakeClick.bind(this);
@@ -38,7 +39,7 @@ class ProfilePic extends Component {
             <React.Fragment>
                  <input type="file" className="hidden__icon" ref={this.fileInput} onChange={this.handleFileChange} />
                 <button className="btn--img" type="button" onClick={this.fakeClick}>Añadir Imagen</button>    
-                <div className="uploadFile" style={{backgroundImage: `url(${this.previewImage})` }}></div>
+                <div className="uploadFile" style={{backgroundImage: `url(${this.previewImage})` }} ref={this.props.previewRef}></div>
 
             </React.Fragment>
         );

@@ -29,7 +29,7 @@ class ShareCard extends Component {
             <React.Fragment>
                 <fieldset>
                     <div className="collapsible collapsible-share">
-                        <div className="collapsible__clickable collapsible__share">
+                        <div className="collapsible__clickable collapsible__share" onClick={this.props.handleCollapsiblesShare}>
                             <div className="collapsible__clickable-title">
                                 <i className="fas fa-share-alt title-icon"></i>
                                 <h2 className="title__collapsible title__collapsible-share">Comparte</h2>
@@ -38,14 +38,13 @@ class ShareCard extends Component {
                                 <i className="fas fa-angle-down icon-down"></i>
                             </div>
                         </div>
-                        <div className="collapsible__content-share">
+                        <div className={`collapsible__content-share ${this.props.collapsibleShare}`}>
                             <button type="button" className="collapsible__content-button" onClick={this.createCard}>
                                 <i className="far fa-address-card"></i>Crear tarjeta
                             </button>
                             <div className={`getURL  ${this.state.twitter}`}>
-                                <p class="twitter-text">La tarjeta ha sido creada:</p>
+                                <p className="twitter-text">La tarjeta ha sido creada:</p>
                                 <a className="card-link" href={this.state.urlCard} target="blank">{this.state.urlCard}</a>
-                            
                                 <a className="link-twitter" href={this.state.urlTwitter} target="blank">
                                     <button className="btn-twitter" type="button">
                                         <i className="fab fa-twitter"></i>

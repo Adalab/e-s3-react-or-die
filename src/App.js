@@ -4,12 +4,16 @@ import CardIndex from './components/CardIndex';
 import { fetchSkills } from './services/SkillsApi';
 import MainIndex from './components/MainIndex';
 
+
 import './App.scss';
 import darth from './images/darth.jpg';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.formRef = React.createRef();
+        this.previewRef = React.createRef();
+        this.designRef = React.createRef();
         this.state = {
             skillArray: [],
             card: {
@@ -24,11 +28,13 @@ class App extends React.Component {
                 photo: darth,
                 skills: []
             },
-            
             styles: {
                 colors: '',
                 typo: ''
             },
+            collapsibleDesign : "",
+            collapsibleFill : "",
+            collapsibleShare : ""   
         }
 
         this.handleName = this.handleName.bind(this);
@@ -44,6 +50,11 @@ class App extends React.Component {
         this.getSkills = this.getSkills.bind(this);
         this.getLastWord = this.getLastWord.bind(this);
         this.getLastStyles = this.getLastStyles.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+        this.handleCollapsiblesDesign = this.handleCollapsiblesDesign.bind(this);
+        this.handleCollapsiblesFill = this.handleCollapsiblesFill.bind(this);
+        this.handleCollapsiblesShare = this.handleCollapsiblesShare.bind(this);
+
     }
 
     componentDidMount() {
@@ -251,13 +262,87 @@ class App extends React.Component {
         this.saveLastWord(newCard);
     }
 
+    handleReset() {
+      const defaultCard = {
+        name: 'Nombre Apellido',
+        job: 'Front-end developer',
+        photo: darth,
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+        palette: '1',
+        typography: '2',
+        skills: []
+      }
+      this.setState({
+        card: defaultCard
+      });
+      this.formRef.current.reset();
+      this.previewRef.current.style='';
+    };
+
+
+    handleCollapsiblesDesign(){
+        if (this.state.collapsibleDesign.includes('hidden__icon')) {
+        this.setState({
+            collapsibleDesign: '',
+            collapsibleFill : 'hidden__icon',
+            collapsibleShare : 'hidden__icon'
+        })
+       
+        } else { 
+        this.setState({
+             collapsibleDesign: 'hidden__icon',
+        })
+
+        }
+    }
+
+    handleCollapsiblesFill(){
+    
+        if (this.state.collapsibleFill.includes('hidden__icon')) {
+        this.setState({
+            collapsibleFill: '',
+            collapsibleDesign : 'hidden__icon',
+            collapsibleShare : 'hidden__icon'
+        })
+
+        } else { 
+        this.setState({
+             collapsibleFill: 'hidden__icon',
+        })
+        }   
+    }
+
+    handleCollapsiblesShare(){
+        
+        console.log('en share');
+
+        if (this.state.collapsibleShare.includes('hidden__icon')) {
+        this.setState({
+            collapsibleShare : '',
+            collapsibleDesign : 'hidden__icon',
+            collapsibleFill : 'hidden__icon'
+        })
+
+        } else { 
+        this.setState({
+             collapsibleShare: 'hidden__icon',
+        })
+    
+        }
+    }
+
+    
+
     render() {
         return (
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} />} />
-
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset} handleCollapsiblesDesign={this.handleCollapsiblesDesign} handleCollapsiblesFill={this.handleCollapsiblesFill} handleCollapsiblesShare={this.handleCollapsiblesShare}formRef={this.formRef} previewRef={this.previewRef} designRef={this.designRef} collapsibleDesign={this.state.collapsibleDesign}
+                    collapsibleFill={this.state.collapsibleFill} collapsibleShare={this.state.collapsibleShare} />} />
             </Switch>
 
         );
