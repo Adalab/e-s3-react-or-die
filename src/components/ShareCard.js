@@ -29,7 +29,7 @@ class ShareCard extends Component {
             <React.Fragment>
                 <fieldset>
                     <div className="collapsible collapsible-share">
-                        <div className="collapsible__clickable collapsible__share" onClick={this.props.collapsibleShare}>
+                        <div className="collapsible__clickable collapsible__share" onClick={this.props.handleCollapsiblesShare}>
                             <div className="collapsible__clickable-title">
                                 <i className="fas fa-share-alt title-icon"></i>
                                 <h2 className="title__collapsible title__collapsible-share">Comparte</h2>
