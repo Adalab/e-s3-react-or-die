@@ -13,6 +13,7 @@ class App extends React.Component {
         super(props);
         this.formRef = React.createRef();
         this.previewRef = React.createRef();
+        this.designRef = React.createRef();
         this.state = {
             skillArray: [],
             card: {
@@ -31,8 +32,9 @@ class App extends React.Component {
                 colors: '',
                 typo: ''
             },
-
-            
+            collapsibleDesign : "",
+            collapsibleFill : "",
+            collapsibleShare : ""   
         }
 
         this.handleName = this.handleName.bind(this);
@@ -49,7 +51,8 @@ class App extends React.Component {
         this.getLastWord = this.getLastWord.bind(this);
         this.getLastStyles = this.getLastStyles.bind(this);
         this.handleReset = this.handleReset.bind(this);
-        // this.handleCollapsibles = this.handleCollapsibles.bind(this);
+        this.handleCollapsibles = this.handleCollapsibles.bind(this);
+
     }
 
     componentDidMount() {
@@ -278,16 +281,28 @@ class App extends React.Component {
     };
 
 
-    // handleCollapsibles(event){
-    //     const clickableSection = event.currentTarget;
-    //     if (clickableSection.classList.contains('collapsible__design') === true) {
-    //       designContent.classList.toggle('hidden');
-    //     } else if (clickableSection.classList.contains('collapsible__fill') === true) {
-    //       fillContent.classList.toggle('hidden');
-    //     } else {
-    //       shareContent.classList.toggle('hidden');
-    //     }
-    // }
+    handleCollapsibles(){
+
+        console.log('hola')
+        if (this.state.collapsibleDesign.includes('hidden__icon')) {
+        this.setState({
+            collapsibleDesign: '',
+            collapsibleFill : 'hidden__icon',
+            collapsibleShare : 'hidden__icon'
+        })
+
+        console.log(this.state.collapsibleDesign)
+    } else { 
+        this.setState({
+             collapsibleDesign: 'hidden__icon',
+        })
+    
+        // } else if (clickableSection.classList.contains('collapsible__fill') === true) {
+        //   fillContent.classList.toggle('hidden');
+        // } else {
+        //   shareContent.classList.toggle('hidden');
+        // }
+    }}
     
 
     render() {
@@ -295,7 +310,8 @@ class App extends React.Component {
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset} handleCollapsibles={this.handleCollapsibles} formRef={this.formRef} previewRef={this.previewRef}/>} />
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset} handleCollapsibles={this.handleCollapsibles} formRef={this.formRef} previewRef={this.previewRef} designRef={this.designRef} collapsibleDesign={this.state.collapsibleDesign}
+                    collapsibleFill={this.state.collapsibleFill} collapsibleShare={this.state.collapsibleShare} />} />
             </Switch>
 
         );

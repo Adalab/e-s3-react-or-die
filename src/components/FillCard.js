@@ -8,7 +8,7 @@ class FillCard extends Component {
 
                 <fieldset>
                     <div className="collapsible">
-                        <div className="collapsible__clickable collapsible__fill">
+                        <div className={`collapsible__clickable collapsible__fill ${this.props.collapsibleFill}`} >
                             <div className="collapsible__clickable-title">
                                 <i className="far fa-keyboard title-icon"></i>
                                 <h2 className="title__collapsible">Rellena</h2>
