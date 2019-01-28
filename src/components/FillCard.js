@@ -31,7 +31,7 @@ class FillCard extends Component {
                                     <label htmlFor="imagen" className="form-label">Imagen de Perfil</label>
                                     <div className="collapsible__upload-file">
                                         <input type="file" id="img-selector" name="img-selector" className="action_hiddenField" />
-                                        <ProfilePic cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} />
+                                        <ProfilePic cardInfo={this.props.cardInfo} handleUrl={this.props.handleUrl} previewRef={this.props.previewRef}/>
                                     </div>
                                 </div>
                             </div>

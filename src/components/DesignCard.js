@@ -7,7 +7,9 @@ class DesignCard extends Component {
             <React.Fragment>
                 <fieldset className="section-form__subsection">
                     <div className="collapsible">
-                        <div className="collapsible__clickable collapsible__design">
+                        <div className="collapsible__clickable collapsible__design" 
+                        // onClick={this.props.}
+                        > 
                             <div className="collapsible__clickable-title">
                                 <i className="far fa-object-ungroup title-icon"></i>
                                 <h2 className="title__collapsible">Diseña</h2>

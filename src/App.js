@@ -11,6 +11,8 @@ import darth from './images/darth.jpg';
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.formRef = React.createRef();
+        this.previewRef = React.createRef();
         this.state = {
             skillArray: [],
             card: {
@@ -29,6 +31,8 @@ class App extends React.Component {
                 colors: '',
                 typo: ''
             },
+
+            
         }
 
         this.handleName = this.handleName.bind(this);
@@ -45,6 +49,7 @@ class App extends React.Component {
         this.getLastWord = this.getLastWord.bind(this);
         this.getLastStyles = this.getLastStyles.bind(this);
         this.handleReset = this.handleReset.bind(this);
+        // this.handleCollapsibles = this.handleCollapsibles.bind(this);
     }
 
     componentDidMount() {
@@ -268,16 +273,29 @@ class App extends React.Component {
       this.setState({
         card: defaultCard
       });
-      document.querySelector(".card-form").reset();
-      document.querySelector(".uploadFile").style='';
+      this.formRef.current.reset();
+      this.previewRef.current.style='';
     };
+
+
+    // handleCollapsibles(event){
+    //     const clickableSection = event.currentTarget;
+    //     if (clickableSection.classList.contains('collapsible__design') === true) {
+    //       designContent.classList.toggle('hidden');
+    //     } else if (clickableSection.classList.contains('collapsible__fill') === true) {
+    //       fillContent.classList.toggle('hidden');
+    //     } else {
+    //       shareContent.classList.toggle('hidden');
+    //     }
+    // }
+    
 
     render() {
         return (
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset}/>} />
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset} handleCollapsibles={this.handleCollapsibles} formRef={this.formRef} previewRef={this.previewRef}/>} />
             </Switch>
 
         );
