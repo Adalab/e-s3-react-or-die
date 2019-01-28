@@ -11,6 +11,9 @@ import darth from './images/darth.jpg';
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.formRef = React.createRef();
+        this.previewRef = React.createRef();
+        this.designRef = React.createRef();
         this.state = {
             skillArray: [],
             card: {
@@ -29,6 +32,9 @@ class App extends React.Component {
                 colors: '',
                 typo: ''
             },
+            collapsibleDesign : "",
+            collapsibleFill : "",
+            collapsibleShare : ""   
         }
 
         this.handleName = this.handleName.bind(this);
@@ -45,6 +51,8 @@ class App extends React.Component {
         this.getLastWord = this.getLastWord.bind(this);
         this.getLastStyles = this.getLastStyles.bind(this);
         this.handleReset = this.handleReset.bind(this);
+        this.handleCollapsibles = this.handleCollapsibles.bind(this);
+
     }
 
     componentDidMount() {
@@ -268,16 +276,59 @@ class App extends React.Component {
       this.setState({
         card: defaultCard
       });
-      document.querySelector(".card-form").reset();
-      document.querySelector(".uploadFile").style='';
+      this.formRef.current.reset();
+      this.previewRef.current.style='';
     };
+
+
+    handleCollapsibles(){
+        if (this.state.collapsibleDesign.includes('hidden__icon')) {
+        this.setState({
+            collapsibleDesign: '',
+            collapsibleFill : 'hidden__icon',
+            collapsibleShare : 'hidden__icon'
+        })
+       
+        } else { 
+        this.setState({
+             collapsibleDesign: 'hidden__icon',
+        })
+
+        if (this.state.collapsibleFill.includes('hidden__icon')) {
+            this.setState({
+                collapsibleFill: '',
+                collapsibleDesign : 'hidden__icon',
+                collapsibleShare : 'hidden__icon'
+            })
+    
+        } else { 
+            this.setState({
+                 collapsibleFill: 'hidden__icon',
+            })
+    }}
+    if (this.state.collapsibleShare.includes('hidden__icon')) {
+        this.setState({
+            collapsibleShare : '',
+            collapsibleDesign : 'hidden__icon',
+            collapsibleFill : 'hidden__icon'
+        })
+
+    } else { 
+        this.setState({
+             collapsibleShare: 'hidden__icon',
+        })
+    
+    }
+}
+    
 
     render() {
         return (
             <Switch>
                 <Route exact path="/" component={MainIndex} />
                 <Route path="/CardIndex" render={() => <CardIndex handleName={this.handleName}
-                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset}/>} />
+                    handleJob={this.handleJob} handlePhone={this.handlePhone} handleEmail={this.handleEmail} handleLinkedin={this.handleLinkedin} handleGithub={this.handleGithub} handlePhoto={this.handlePhoto} cardInfo={this.state.card} handleUrl={this.handleUrl} handleColor={this.handleColor} styles={this.state.styles} handleTypo={this.handleTypo} handleSkills={this.addSkillorNot} skillArray={this.state.skillArray} handleReset={this.handleReset} handleCollapsibles={this.handleCollapsibles} formRef={this.formRef} previewRef={this.previewRef} designRef={this.designRef} collapsibleDesign={this.state.collapsibleDesign}
+                    collapsibleFill={this.state.collapsibleFill} collapsibleShare={this.state.collapsibleShare} />} />
             </Switch>
 
         );
