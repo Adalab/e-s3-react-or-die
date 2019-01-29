@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class ResetBtn extends Component {
   render() {
     const resetButton = (
@@ -11,4 +10,5 @@ class ResetBtn extends Component {
     return resetButton;
   }
 }
+
 export default ResetBtn;

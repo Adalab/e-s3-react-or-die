@@ -1,49 +1,45 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 
 const fr = new FileReader();
 
 
 class ProfilePic extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.fileInput = React.createRef();
+  constructor(props) {
+    super(props);
+    this.fileInput = React.createRef();
 
-        this.previewImage = '';
+    this.previewImage = '';
 
-        this.fakeClick = this.fakeClick.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);
-        this.writeImage = this.writeImage.bind(this);
+    this.fakeClick = this.fakeClick.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
+    this.writeImage = this.writeImage.bind(this);
+  }
 
-    }
+  writeImage() {
+    const url = fr.result;
+    this.previewImage = url;
+    this.props.handleUrl(url);
+  }
 
-    writeImage() {
-        const url = fr.result;
-        this.previewImage = url;
-        this.props.handleUrl(url);
-    }    
+  fakeClick() {
+    this.fileInput.current.click();
+  }
 
-    fakeClick(){
-        this.fileInput.current.click();
-    }
+  handleFileChange(e) {
+    const myFile = e.currentTarget.files[0];
+    fr.addEventListener('load', this.writeImage);
+    fr.readAsDataURL(myFile);
+  };
 
-    handleFileChange(e) {
-        const myFile = e.currentTarget.files[0];
-        
-        fr.addEventListener('load', this.writeImage);
-        fr.readAsDataURL(myFile);
-    };
-
-    render() {
-        return (
-            <React.Fragment>
-                 <input type="file" className="hidden__icon" ref={this.fileInput} onChange={this.handleFileChange} />
-                <button className="btn--img" type="button" onClick={this.fakeClick}>Añadir Imagen</button>    
-                <div className="uploadFile" style={{backgroundImage: `url(${this.previewImage})` }} ref={this.props.previewRef}></div>
-
-            </React.Fragment>
-        );
-    }
-
+  render() {
+    return (
+      <Fragment>
+        <input type="file" className="hidden__icon" ref={this.fileInput} onChange={this.handleFileChange} />
+        <button className="btn--img" type="button" onClick={this.fakeClick}>Añadir Imagen</button>
+        <div className="uploadFile" style={{ backgroundImage: `url(${this.previewImage})` }} ref={this.props.previewRef}></div>
+      </Fragment>
+    );
+  }
 }
+
 export default ProfilePic;
