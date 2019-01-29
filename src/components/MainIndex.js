@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../stylesheets/index.scss';
 import logoAdalab from '../images/logo-adalab.png';
 import logoCards from '../images/logo.svg';
 

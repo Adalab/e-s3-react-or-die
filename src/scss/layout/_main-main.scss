@@ -105,7 +105,7 @@ body {
     }
 }
   
-.link__other{
+.link__other {
     text-decoration: none;
 }
   
@@ -116,4 +116,9 @@ body {
     height: 26px;
     display: flex;
     justify-content: center;
+}
+
+.link-router {
+    text-decoration: none;
+      color: $color-white-three;
 }

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import '../stylesheets/index.scss';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
